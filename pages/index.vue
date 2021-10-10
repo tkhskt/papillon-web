@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content" :class="currentSection">
+  <div id="main-content" class="main-content" :class="currentSection">
     <top class="top" />
     <div class="sections">
       <span class="vertical-line"></span>
