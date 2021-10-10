@@ -6,7 +6,7 @@
     <div class="background">
       <img class="stroke--top" src="~assets/img/stroke_top.svg" />
       <img class="stroke--bottom" src="~assets/img/stroke_bottom.svg" />
-      <p class="scroll-nav">scroll to discover</p>
+      <p class="scroll-nav">scroll to navigate</p>
     </div>
     <artwork class="artwork" :scroll-y="scrollY" />
   </div>
