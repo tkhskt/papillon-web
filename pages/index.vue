@@ -30,8 +30,10 @@ export default {
         this.currentSection = 'credits'
       } else if (this.scrollY > window.innerHeight * 2 + imageOffset) {
         this.currentSection = 'concepts'
-      } else if (this.scrollY > window.innerHeight + imageOffset) {
+      } else if (this.scrollY > window.innerHeight) {
         this.currentSection = 'tracks'
+      } else if (this.scrollY < window.innerHeight) {
+        this.currentSection = 'top'
       }
     },
   },
@@ -43,6 +45,10 @@ export default {
   position: relative;
   overflow: hidden;
   transition: background-color 0.5s ease;
+  background-color: $color-blue;
+  &.top {
+    background-color: $color-blue;
+  }
   &.tracks {
     background-color: $color-white;
   }
@@ -56,7 +62,7 @@ export default {
 
 .top {
   margin-bottom: 36.7vh;
-  background: $color-white;
+  // background: $color-white;
 }
 
 .sections {
