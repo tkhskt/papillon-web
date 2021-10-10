@@ -1,6 +1,6 @@
 <template>
   <div id="main-content" class="main-content" :class="currentSection">
-    <top class="top" />
+    <top class="top" :scroll-y="scrollY" />
     <div class="sections">
       <span class="vertical-line"></span>
       <tracks ref="tracks" class="tracks" />

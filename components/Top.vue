@@ -8,11 +8,20 @@
       <img class="stroke--bottom" src="~assets/img/stroke_bottom.svg" />
       <p class="scroll-nav">scroll to discover</p>
     </div>
-    <artwork class="artwork" />
+    <artwork class="artwork" :scroll-y="scrollY" />
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: {
+    scrollY: {
+      type: Number,
+      default: 0,
+    },
+  },
+}
+</script>
 
 <style scoped lang="scss">
 .top-container {
