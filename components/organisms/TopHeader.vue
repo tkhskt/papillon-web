@@ -1,19 +1,35 @@
 <template>
-    <div class="top-header">
-        <h1>Papillon</h1>
-        <div>
-            <a>Spotify</a>
-            <a>Bandcamp</a>
-            <a>Youtube</a>
-        </div>
+  <div class="top-header-container">
+    <h1 class="title">Papillon</h1>
+    <div class="outer-links">
+      <a class="link">Spotify</a>
+      <a class="link">Bandcamp</a>
+      <a class="link">Youtube</a>
     </div>
+  </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style scoped lang="scss">
-.container {
-  overflow-x: hidden;
+.top-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    color: white;
+    font-size: 180px;
+    @include font-hightower();
+  }
+  .outer-links {
+    display: flex;
+    color: white;
+    .link {
+      cursor: pointer;
+      &:nth-child(2) {
+        margin: 0 60px;
+      }
+    }
+  }
 }
 </style>

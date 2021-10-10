@@ -1,19 +1,16 @@
 <template>
-    <div class="top-header">
-        <h1>Papillon</h1>
-        <div>
-            <a>Spotify</a>
-            <a>Bandcamp</a>
-            <a>Youtube</a>
-        </div>
-    </div>
+  <div class="artwork-container">
+    <img class="artwork-img" src="~assets/img/papillon.webp" />
+  </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style scoped lang="scss">
-.container {
-  overflow-x: hidden;
+.artwork-img {
+  width: 58.4vw;
+  height: 86.7vh;
+  object-fit: cover;
+  object-position: top;
 }
 </style>
