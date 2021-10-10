@@ -30,9 +30,9 @@ export default {
         this.currentSection = 'credits'
       } else if (this.scrollY > window.innerHeight * 2 + imageOffset) {
         this.currentSection = 'concepts'
-      } else if (this.scrollY > window.innerHeight) {
+      } else if (this.scrollY > window.innerHeight * 0.8) {
         this.currentSection = 'tracks'
-      } else if (this.scrollY < window.innerHeight) {
+      } else if (this.scrollY < window.innerHeight * 0.8) {
         this.currentSection = 'top'
       }
     },
