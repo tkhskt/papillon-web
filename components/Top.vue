@@ -7,6 +7,12 @@
       <img class="stroke--top" src="~assets/img/stroke_top.svg" />
       <img class="stroke--bottom" src="~assets/img/stroke_bottom.svg" />
       <p class="scroll-nav">scroll to navigate</p>
+      <crossfade
+        class="crossfade"
+        :cursor-x="cursorX"
+        :cursor-y="cursorY"
+        :scroll-y="scrollY"
+      />
     </div>
     <artwork class="artwork" :scroll-y="scrollY" />
   </div>
@@ -16,6 +22,14 @@
 export default {
   props: {
     scrollY: {
+      type: Number,
+      default: 0,
+    },
+    cursorX: {
+      type: Number,
+      default: 0,
+    },
+    cursorY: {
       type: Number,
       default: 0,
     },
@@ -70,6 +84,11 @@ export default {
     position: absolute;
     top: 50vh;
     right: 5.2vw;
+  }
+  .crossfade {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
   }
 }
 

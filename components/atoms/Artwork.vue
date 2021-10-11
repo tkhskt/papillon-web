@@ -41,6 +41,6 @@ export default {
   height: 86.7vh;
   object-fit: cover;
   object-position: top;
-  transition: object-position 0.2s ease-out;
+  // transition: object-position 0.2s ease-out;
 }
 </style>
