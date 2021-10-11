@@ -1,13 +1,22 @@
 <template>
-  <div id="main-content" class="main-content" :class="currentSection">
-    <top class="top" :scroll-y="scrollY" />
-    <div class="sections">
-      <span class="vertical-line"></span>
-      <tracks ref="tracks" class="tracks" />
-      <concepts ref="concepts" class="concepts" />
-      <credits ref="credits" class="credits" />
+  <div>
+    <transition name="header">
+      <Header
+        v-if="currentSection != 'top'"
+        class="header"
+        :color="currentSection"
+      />
+    </transition>
+    <div id="main-content" class="main-content" :class="currentSection">
+      <top class="top" :scroll-y="scrollY" />
+      <div class="sections">
+        <span class="vertical-line"></span>
+        <tracks ref="tracks" class="tracks" />
+        <concepts ref="concepts" class="concepts" />
+        <credits ref="credits" class="credits" />
+      </div>
+      <gradient-circle class="circle" />
     </div>
-    <gradient-circle class="circle" />
   </div>
 </template>
 
@@ -16,7 +25,7 @@ export default {
   data() {
     return {
       scrollY: 0,
-      currentSection: '',
+      currentSection: 'top',
     }
   },
   mounted() {
@@ -32,7 +41,7 @@ export default {
         this.currentSection = 'concepts'
       } else if (this.scrollY > window.innerHeight * 0.8) {
         this.currentSection = 'tracks'
-      } else if (this.scrollY < window.innerHeight * 0.8) {
+      } else {
         this.currentSection = 'top'
       }
     },
@@ -60,6 +69,14 @@ export default {
   }
 }
 
+.header {
+  position: fixed;
+  top: 49px;
+  padding: 0 58px;
+  z-index: 2000;
+  width: 100%;
+}
+
 .top {
   margin-bottom: 36.7vh;
   // background: $color-white;
@@ -78,8 +95,6 @@ export default {
     right: 0;
     margin: auto;
   }
-  .track {
-  }
 }
 
 .circle {
@@ -87,7 +102,14 @@ export default {
   left: 0;
   right: 0;
   margin: auto;
-
   bottom: -14.3vw;
+}
+
+.header-enter-active,
+.header-leave-active {
+  transition: opacity 0.5s;
+}
+.header-enter, .header-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

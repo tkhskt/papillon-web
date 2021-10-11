@@ -25,6 +25,7 @@
     display: flex;
     color: white;
     .link {
+      font-size: 18px;
       cursor: pointer;
       &:nth-child(2) {
         margin: 0 60px;
