@@ -13,6 +13,12 @@
       class="main-content"
       :class="currentSection"
     >
+      <crossfade
+        class="crossfade"
+        :cursor-x="cursor.x"
+        :cursor-y="cursor.y"
+        :scroll-y="scrollY"
+      />
       <top
         class="top"
         :scroll-y="scrollY"
@@ -33,8 +39,10 @@
 
 <script>
 import { TweenLite } from 'gsap/dist/gsap'
+import Crossfade from '~/components/atoms/Crossfade.vue'
 
 export default {
+  components: { Crossfade },
   data() {
     return {
       scrollY: 0,
@@ -83,13 +91,18 @@ export default {
     },
     mouseMove(event) {
       const cursor = this.$refs.cursor
-      this.cursor.x = event.clientX
-      this.cursor.y = event.clientY
+      // this.cursor.x = event.clientX
+      // this.cursor.y = event.clientY
+      const component = this
       TweenLite.to(cursor, 0.5, {
         css: {
           visibility: 'visible',
           left: event.clientX,
           top: event.clientY,
+        },
+        onUpdate() {
+          component.cursor.x = cursor.offsetLeft
+          component.cursor.y = cursor.offsetTop
         },
       })
     },
@@ -114,6 +127,9 @@ export default {
   &__social {
     background-color: #fff;
   }
+}
+
+.crossfade {
 }
 
 .main-content {

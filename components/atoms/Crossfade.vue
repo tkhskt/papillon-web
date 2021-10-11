@@ -2,9 +2,7 @@
   <div
     class="crossfade-container"
     :style="{
-      'clip-path': `circle(50px at left ${cursorX + 50 / 2}px top ${
-        cursorY + 50 / 2 + scrollY
-      }px)`,
+      'clip-path': `circle(100px at ${cursorX}px ${cursorY + scrollY}px)`,
     }"
   >
     <video controls class="video-content">
@@ -48,6 +46,9 @@ export default {
         'clip-path': `padding-box circle(40px at ${this.cursorX}px ${newValue.y}px)`,
       }
     },
+    scrollY(oldValue, newValue) {
+      // todo
+    },
   },
 }
 </script>
@@ -56,38 +57,20 @@ export default {
 .crossfade-container {
   position: absolute;
   overflow: hidden;
-  transform: scaleZ(5000);
-  width: 100vw;
+  transform: scaleZ(1);
+  width: 100%;
   height: 100vh;
   .video-content {
     min-width: 100%;
     min-height: 100%;
-
-    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
     width: auto;
     height: auto;
 
-    /* Center the video */
     position: absolute;
     top: 50%;
     left: 50%;
     overflow: hidden;
     transform: translate(-50%, -50%);
-    // clip-path: circle(40% at 50% 50%);
-    z-index: -1;
-  }
-}
-
-.background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  &-blue {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: $color-blue;
   }
 }
 </style>
