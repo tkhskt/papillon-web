@@ -9,7 +9,7 @@
       <source
         type="image/webp"
         class="artwork-img"
-        src="~assets/img/papillon.webp"
+        srcset="~assets/img/papillon.webp"
         :style="styleObj"
       />
       <img
