@@ -5,11 +5,19 @@
     @mouseover="mouseOver"
     @mouseleave="mouseLeave"
   >
-    <img
-      class="artwork-img"
-      src="~assets/img/papillon.webp"
-      :style="styleObj"
-    />
+    <picture>
+      <source
+        type="image/webp"
+        class="artwork-img"
+        src="~assets/img/papillon.webp"
+        :style="styleObj"
+      />
+      <img
+        class="artwork-img"
+        src="~assets/img/papillon.png"
+        :style="styleObj"
+      />
+    </picture>
   </div>
 </template>
 
