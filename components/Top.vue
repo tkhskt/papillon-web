@@ -1,5 +1,9 @@
 <template>
-  <div class="top-container">
+  <div
+    class="top-container"
+    @mouseover="onHoverContent"
+    @mouseleave="onLeaveContent"
+  >
     <div class="content">
       <top-header class="top-header" />
     </div>
@@ -20,6 +24,32 @@ export default {
       default: 0,
     },
   },
+  data() {
+    return {
+      hoverContent: false,
+      hoverBackground: false,
+    }
+  },
+  methods: {
+    onHoverContent() {
+      this.hoverContent = true
+      this.$store.dispatch('main/onChangeHoverTop', true)
+    },
+    onLeaveContent() {
+      this.hoverContent = false
+
+      this.$store.dispatch('main/onChangeHoverTop', false)
+    },
+    onHoverBackground() {
+      this.hoverBackground = true
+      this.$store.dispatch('main/onChangeHoverTop', true)
+    },
+    onLeaveBackground() {
+      this.hoverBackground = false
+      const hover = !this.hoverBackground && !this.hoverContent
+      this.$store.dispatch('main/onChangeHoverTop', !hover)
+    },
+  },
 }
 </script>
 
@@ -32,9 +62,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
     width: 100%;
-    height: 100%;
+    z-index: 1;
     .top-header {
       padding-left: 6.7vw;
       padding-right: 5.2vw;
@@ -70,6 +99,7 @@ export default {
     position: absolute;
     top: 50vh;
     right: 5.2vw;
+    // z-index: 5;
   }
 }
 

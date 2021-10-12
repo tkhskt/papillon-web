@@ -5,7 +5,7 @@
       'clip-path': `circle(100px at ${cursorX}px ${cursorY + scrollY}px)`,
     }"
   >
-    <video controls class="video-content">
+    <video controls class="video-content" :class="{ invisible: hoverTopLink }">
       <source src="~assets/video/papillon.webm" type="video/webm" />
       <source src="~assets/video/papillon.mp4" type="video/mp4" />
     </video>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     cursorX: {
@@ -34,6 +35,9 @@ export default {
         'clip-path': 'none',
       },
     }
+  },
+  computed: {
+    ...mapState('main', ['hoverTopLink']),
   },
   watch: {
     cursorX(oldValue, newValue) {
@@ -60,6 +64,8 @@ export default {
   transform: scaleZ(1);
   width: 100%;
   height: 100vh;
+  will-change: clip-path;
+
   .video-content {
     min-width: 100%;
     min-height: 100%;
@@ -71,6 +77,12 @@ export default {
     left: 50%;
     overflow: hidden;
     transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 0.2s linear 0.1s;
+    &.invisible {
+      opacity: 0;
+      transition: opacity 0.2s linear 0.1s;
+    }
   }
 }
 </style>

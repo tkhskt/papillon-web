@@ -1,10 +1,29 @@
 <template>
   <div class="top-header-container">
     <h1 class="title">Papillon</h1>
-    <div class="outer-links">
-      <a class="link">Spotify</a>
-      <a class="link">Bandcamp</a>
-      <a class="link">Youtube</a>
+    <div
+      class="outer-links"
+      @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
+      @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
+    >
+      <a
+        class="link"
+        @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
+        @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
+        >Spotify</a
+      >
+      <a
+        class="link"
+        @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
+        @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
+        >Bandcamp</a
+      >
+      <a
+        class="link"
+        @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
+        @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
+        >Youtube</a
+      >
     </div>
   </div>
 </template>
@@ -23,12 +42,17 @@
   }
   .outer-links {
     display: flex;
-    color: white;
+    color: $color-white;
+    transition: color 0.2s ease;
     .link {
       font-size: 18px;
       cursor: pointer;
       &:nth-child(2) {
         margin: 0 60px;
+      }
+      &:hover {
+        transition: color 0.2s ease;
+        color: $color-black;
       }
     }
   }

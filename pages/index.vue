@@ -33,11 +33,29 @@
       </div>
       <gradient-circle class="circle" />
     </div>
-    <span ref="cursor" class="cursor"></span>
+    <div ref="cursor" class="cursor" :class="{ bandcamp: hoverTrack }">
+      <span
+        ref="xfd"
+        class="xfd-guide"
+        :class="{
+          invisible: !hoverTop || hoverArtwork || hoverTopLink,
+        }"
+        >Play XFD</span
+      >
+      <img
+        ref="bandcamp"
+        class="bandcamp"
+        src="~assets/img/bandcamp_logo.png"
+        :class="{
+          invisible: !hoverTrack,
+        }"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { TweenLite } from 'gsap/dist/gsap'
 import Crossfade from '~/components/atoms/Crossfade.vue'
 
@@ -52,6 +70,28 @@ export default {
         y: 0,
       },
     }
+  },
+  computed: {
+    ...mapState('main', [
+      'hoverArtwork',
+      'hoverTop',
+      'hoverTopLink',
+      'hoverTrack',
+    ]),
+  },
+  watch: {
+    hoverArtwork(newValue) {
+      this.handleCursor()
+    },
+    hoverTop(newValue) {
+      this.handleCursor()
+    },
+    hoverTopLink(newValue) {
+      this.handleCursor()
+    },
+    hoverTrack(newValue) {
+      this.handleCursor()
+    },
   },
   mounted() {
     // window.addEventListener('scroll', this.handleScroll)
@@ -106,6 +146,82 @@ export default {
         },
       })
     },
+    handleCursor() {
+      const cursor = this.$refs.cursor
+      const xfd = this.$refs.xfd
+      const bandcamp = this.$refs.bandcamp
+      if (this.hoverTopLink) {
+        TweenLite.to(cursor, 0.5, {
+          css: {
+            background: '#ffffff',
+            width: '10px',
+            height: '10px',
+          },
+        })
+        return
+      }
+      if (this.hoverTrack) {
+        TweenLite.to(cursor, 0.5, {
+          css: {
+            background: 'transparent',
+            width: '50px',
+            height: '50px',
+          },
+        })
+        TweenLite.to(bandcamp, 0.5, {
+          onStart() {
+            bandcamp.style.display = 'inline'
+          },
+        })
+        return
+      }
+
+      if (this.hoverTop && this.hoverArtwork) {
+        TweenLite.to(cursor, 0.5, {
+          css: {
+            background: '#ffffff',
+            width: '200px',
+            height: '200px',
+          },
+          onStart() {
+            xfd.style.display = 'none'
+          },
+        })
+      } else if (this.hoverTop && !this.hoverArtwork) {
+        TweenLite.to(cursor, 0.5, {
+          css: {
+            background: 'transparent',
+            width: '200px',
+            height: '200px',
+          },
+          onStart() {
+            xfd.style.display = 'inline'
+          },
+        })
+      } else if (!this.hoverTop && this.hoverArtwork) {
+        TweenLite.to(cursor, 0.5, {
+          css: {
+            background: '#ffffff',
+            width: '200px',
+            height: '200px',
+          },
+          onStart() {
+            xfd.style.display = 'none'
+          },
+        })
+      } else {
+        TweenLite.to(cursor, 0.5, {
+          css: {
+            background: '#ffffff',
+            width: '10px',
+            height: '10px',
+          },
+          onStart() {
+            xfd.style.display = 'none'
+          },
+        })
+      }
+    },
   },
 }
 </script>
@@ -114,22 +230,52 @@ export default {
 .cursor {
   pointer-events: none;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   left: 50%;
   top: 50%;
   width: 10px;
   height: 10px;
-  border: 0.5px solid #000;
   transform: translate3d(-50%, -50%, 0);
-  background: #000;
+  color: $color-white;
+  background: $color-white;
   border-radius: 50% 50%;
   will-change: left top;
+  font-size: 20px;
   z-index: 100000;
+  mix-blend-mode: difference;
+  transition: mix-blend-mode 0.2s;
   &__social {
     background-color: #fff;
   }
-}
-
-.crossfade {
+  &.bandcamp {
+    mix-blend-mode: normal;
+  }
+  .xfd-guide {
+    transition: opacity 0.2s ease;
+    opacity: 1;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+    display: none;
+    &.invisible {
+      transition: opacity 0.2s ease;
+      opacity: 0;
+    }
+  }
+  .bandcamp {
+    transition: all 0.5s;
+    opacity: 1;
+    display: none;
+    width: 50px;
+    height: 50px;
+    &.invisible {
+      transition: all 0.5s;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
 }
 
 .main-content {
@@ -137,6 +283,7 @@ export default {
   overflow: hidden;
   transition: background-color 0.5s ease;
   background-color: $color-blue;
+  will-change: transform;
   &.top {
     background-color: $color-blue;
   }

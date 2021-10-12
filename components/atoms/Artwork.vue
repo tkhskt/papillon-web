@@ -1,5 +1,9 @@
 <template>
-  <div class="artwork-container">
+  <div
+    class="artwork-container"
+    @mouseover="mouseOver"
+    @mouseleave="mouseLeave"
+  >
     <img
       class="artwork-img"
       src="~assets/img/papillon.webp"
@@ -30,6 +34,14 @@ export default {
       this.styleObj = {
         'object-position': `0% ${Math.min(percentile * 130, 100)}%`,
       }
+    },
+  },
+  methods: {
+    mouseOver() {
+      this.$store.dispatch('main/onChangeHoverArtwork', true)
+    },
+    mouseLeave() {
+      this.$store.dispatch('main/onChangeHoverArtwork', false)
     },
   },
 }

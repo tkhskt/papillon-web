@@ -1,18 +1,15 @@
 <template>
   <div class="tracks-container">
     <div class="left">
-      <ul class="track-list">
-        <li class="track">01. effe - panta rhei</li>
-        <li class="track">02. Hiroto Kudo (WIP)</li>
-        <li class="track">03. callasoiled feat. smany - roar</li>
-        <li class="track">04. BUNGALANGIT - 神様が見てる</li>
-        <li class="track">05. Virtual Cat - Reminiscence</li>
-        <li class="track">06. zohryu - butterfly effect</li>
-        <li class="track">07. thorn - microcosm (WIP)</li>
-        <li class="track">08. callasoiled feat. zohryu - state of mind</li>
-        <li class="track">09. ido ito - butterfly effect remix (WIP)</li>
-        <li class="track">
-          10. seiji takahashi - butterfly effect remix for zohyru
+      <ul
+        class="track-list"
+        @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
+        @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
+      >
+        <li v-for="track in tracks" :key="track.name">
+          <a :href="track.url" target="_blank" class="track">{{
+            track.name
+          }}</a>
         </li>
       </ul>
     </div>
@@ -22,7 +19,76 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      tracks: [
+        {
+          name: '01. effe - panta rhei',
+          url: '',
+        },
+        {
+          name: '02. Hiroto Kudo (WIP)',
+          url: '',
+        },
+        {
+          name: '03. callasoiled feat. smany - roar',
+          url: '',
+        },
+        {
+          name: '04. BUNGALANGIT - 神様が見てる',
+          url: '',
+        },
+        {
+          name: '05. Virtual Cat - Reminiscence',
+          url: '',
+        },
+        {
+          name: '06. zohryu - butterfly effect',
+          url: '',
+        },
+        {
+          name: '07. thorn - microcosm (WIP)',
+          url: '',
+        },
+        {
+          name: '08. callasoiled feat. zohryu - state of mind',
+          url: '',
+        },
+        {
+          name: '09. ido ito - butterfly effect remix (WIP)',
+          url: '',
+        },
+        {
+          name: '10. seiji takahashi - butterfly effect remix for zohyru',
+          url: '',
+        },
+      ],
+    }
+  },
+  methods: {
+    onHoverContent() {
+      this.hoverContent = true
+      this.$store.dispatch('main/onChangeHoverTop', true)
+    },
+    onLeaveContent() {
+      this.hoverContent = false
+
+      this.$store.dispatch('main/onChangeHoverTop', false)
+    },
+    onHoverBackground() {
+      this.hoverBackground = true
+      this.$store.dispatch('main/onChangeHoverTop', true)
+    },
+    onLeaveBackground() {
+      this.hoverBackground = false
+      const hover = !this.hoverBackground && !this.hoverContent
+      this.$store.dispatch('main/onChangeHoverTop', !hover)
+    },
+  },
+}
+</script>
 
 <style scoped lang="scss">
 .tracks-container {
@@ -47,11 +113,20 @@
 
 .track-list {
   list-style: none;
-  font-size: 18px;
-  @include font-acumin();
-  letter-spacing: 0.05em;
-  line-height: 48px;
-  color: $color-black;
+
+  .track {
+    font-size: 18px;
+    @include font-acumin();
+    letter-spacing: 0.05em;
+    line-height: 48px;
+    color: $color-black;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    &:hover {
+      transition: color 0.2s ease;
+      color: $color-blue;
+    }
+  }
 }
 
 .section-title {
