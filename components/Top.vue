@@ -3,6 +3,7 @@
     class="top-container"
     @mouseover="onHoverContent"
     @mouseleave="onLeaveContent"
+    @click="onClickContainer"
   >
     <div class="content">
       <top-header class="top-header" />
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     scrollY: {
@@ -24,11 +26,8 @@ export default {
       default: 0,
     },
   },
-  data() {
-    return {
-      hoverContent: false,
-      hoverBackground: false,
-    }
+  computed: {
+    ...mapState('main', ['hoverArtwork', 'hoverTopLink', 'xfdStarted']),
   },
   methods: {
     onHoverContent() {
@@ -40,14 +39,9 @@ export default {
 
       this.$store.dispatch('main/onChangeHoverTop', false)
     },
-    onHoverBackground() {
-      this.hoverBackground = true
-      this.$store.dispatch('main/onChangeHoverTop', true)
-    },
-    onLeaveBackground() {
-      this.hoverBackground = false
-      const hover = !this.hoverBackground && !this.hoverContent
-      this.$store.dispatch('main/onChangeHoverTop', !hover)
+    onClickContainer() {
+      if (this.hoverArtwork || this.hoverTopLink) return
+      this.$store.dispatch('main/onChangeXfdStarted', !this.xfdStarted)
     },
   },
 }

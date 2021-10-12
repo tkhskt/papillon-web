@@ -1,11 +1,11 @@
 <template>
-  <div
-    class="crossfade-container"
-    :style="{
-      'clip-path': `circle(100px at ${cursorX}px ${cursorY + scrollY}px)`,
-    }"
-  >
-    <video controls class="video-content" :class="{ invisible: hoverTopLink }">
+  <div ref="container" class="crossfade-container">
+    <video
+      ref="xfd"
+      controls
+      class="video-content"
+      :class="{ invisible: hoverTopLink }"
+    >
       <source src="~assets/video/papillon.webm" type="video/webm" />
       <source src="~assets/video/papillon.mp4" type="video/mp4" />
     </video>
@@ -14,6 +14,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { TweenLite } from 'gsap/dist/gsap'
 export default {
   props: {
     cursorX: {
@@ -32,26 +33,77 @@ export default {
   data() {
     return {
       styleObj: {
-        'clip-path': 'none',
+        'clip-path': 'circle(100px at 50% 50%)',
+        transition: 'none',
       },
+      anim: null,
+      currentSize: 100,
     }
   },
   computed: {
-    ...mapState('main', ['hoverTopLink']),
+    ...mapState('main', ['hoverTopLink', 'xfdStarted', 'xfdAnimationRunning']),
   },
   watch: {
     cursorX(oldValue, newValue) {
-      this.styleObj = {
-        'clip-path': `padding-box circle(40px at ${newValue.x}px ${this.cursorY}px)`,
-      }
+      if (this.xfdStarted || this.xfdAnimationRunning) return
+      this.$refs.container.style.clipPath = `circle(${this.currentSize}px at ${
+        this.cursorX
+      }px ${this.cursorY + this.scrollY}px)`
     },
     cursorY(oldValue, newValue) {
-      this.styleObj = {
-        'clip-path': `padding-box circle(40px at ${this.cursorX}px ${newValue.y}px)`,
-      }
+      if (this.xfdStarted || this.xfdAnimationRunning) return
+      this.$refs.container.style.clipPath = `circle(${this.currentSize}px at ${
+        this.cursorX
+      }px ${this.cursorY + this.scrollY}px)`
     },
     scrollY(oldValue, newValue) {
-      // todo
+      if (this.xfdStarted || this.xfdAnimationRunning) return
+      this.$refs.container.style.clipPath = `circle(${this.currentSize}px at ${
+        this.cursorX
+      }px ${this.cursorY + this.scrollY}px)`
+    },
+    xfdStarted(oldValue, newValue) {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      if (newValue) {
+        this.$store.dispatch('main/onChangeXfdAnimationRunning', true)
+
+        const sizeObj = {
+          size: this.currentSize,
+        }
+        if (this.anim != null) this.anim.kill()
+        const component = this
+        this.anim = TweenLite.to(sizeObj, 1, {
+          size: 100,
+          onUpdate() {
+            component.$refs.container.style.clipPath = `circle(${sizeObj.size}px at ${component.cursorX}px ${component.cursorY}px)`
+            component.currentSize = sizeObj.size
+          },
+          onComplete() {
+            component.$store.dispatch('main/onChangeXfdAnimationRunning', false)
+          },
+        })
+        this.$refs.xfd.pause()
+      } else {
+        this.$store.dispatch('main/onChangeXfdAnimationRunning', true)
+
+        const sizeObj = {
+          size: this.currentSize,
+        }
+        if (this.anim != null) this.anim.kill()
+        const component = this
+        this.anim = TweenLite.to(sizeObj, 1, {
+          size: Math.sqrt(width * width + height * height),
+          onUpdate() {
+            component.$refs.container.style.clipPath = `circle(${sizeObj.size}px at ${component.cursorX}px ${component.cursorY}px)`
+            component.currentSize = sizeObj.size
+          },
+          onComplete() {
+            component.$store.dispatch('main/onChangeXfdAnimationRunning', false)
+          },
+        })
+        this.$refs.xfd.play()
+      }
     },
   },
 }
@@ -65,7 +117,7 @@ export default {
   width: 100%;
   height: 100vh;
   will-change: clip-path;
-
+  clip-path: circle(100px at 50% 50%);
   .video-content {
     min-width: 100%;
     min-height: 100%;

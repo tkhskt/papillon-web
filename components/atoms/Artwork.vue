@@ -1,6 +1,7 @@
 <template>
   <div
     class="artwork-container"
+    :class="{ invisible: !artworkVisible }"
     @mouseover="mouseOver"
     @mouseleave="mouseLeave"
   >
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     scrollY: {
@@ -25,7 +27,11 @@ export default {
       styleObj: {
         'object-position': '0% 0%',
       },
+      artworkVisible: true,
     }
+  },
+  computed: {
+    ...mapState('main', ['xfdStarted']),
   },
   watch: {
     scrollY(oldValue, newValue) {
@@ -34,6 +40,10 @@ export default {
       this.styleObj = {
         'object-position': `0% ${Math.min(percentile * 130, 100)}%`,
       }
+      this.artworkVisible = !this.xfdStarted || newValue > window.innerHeight
+    },
+    xfdStarted(newValue) {
+      this.artworkVisible = !newValue || this.scrollY > window.innerHeight
     },
   },
   methods: {
@@ -48,6 +58,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.artwork-container {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  &.invisible {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+}
+
 .artwork-img {
   width: 58.4vw;
   height: 86.7vh;

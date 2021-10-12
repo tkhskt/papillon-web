@@ -40,7 +40,7 @@
         :class="{
           invisible: !hoverTop || hoverArtwork || hoverTopLink,
         }"
-        >Play XFD</span
+        >{{ xfdGuideText }}</span
       >
       <img
         ref="bandcamp"
@@ -69,6 +69,7 @@ export default {
         x: 0,
         y: 0,
       },
+      xfdGuideText: 'Play XFD',
     }
   },
   computed: {
@@ -77,6 +78,7 @@ export default {
       'hoverTop',
       'hoverTopLink',
       'hoverTrack',
+      'xfdStarted',
     ]),
   },
   watch: {
@@ -91,6 +93,13 @@ export default {
     },
     hoverTrack(newValue) {
       this.handleCursor()
+    },
+    xfdStarted(newValue) {
+      if (newValue) {
+        this.xfdGuideText = 'Pause XFD'
+      } else {
+        this.xfdGuideText = 'Play XFD'
+      }
     },
   },
   mounted() {
