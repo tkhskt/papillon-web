@@ -5,22 +5,28 @@
     </div>
     <div class="right">
       <div class="concepts-content">
-        <div class="language">
-          <p
-            class="language__en"
-            :class="{ unselected: selectedLang != 'en' }"
-            @click="selectedLang = 'en'"
+        <div class="language-wrapper">
+          <div
+            class="language"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
           >
-            en
-          </p>
-          <span class="language__stroke"></span>
-          <p
-            class="language__ja"
-            :class="{ unselected: selectedLang != 'ja' }"
-            @click="selectedLang = 'ja'"
-          >
-            ja
-          </p>
+            <p
+              class="language__en"
+              :class="{ unselected: selectedLang != 'en' }"
+              @click="selectedLang = 'en'"
+            >
+              en
+            </p>
+            <span class="language__stroke"></span>
+            <p
+              class="language__ja"
+              :class="{ unselected: selectedLang != 'ja' }"
+              @click="selectedLang = 'ja'"
+            >
+              ja
+            </p>
+          </div>
         </div>
         <p v-if="selectedLang == 'en'" class="concepts--en">
           I really wanted to bring back together many members of the Japanese
@@ -90,9 +96,14 @@ export default {
 .concepts-content {
   color: $color-white;
   padding: 0 11.4vw;
-  .language {
+  .language-wrapper {
     display: flex;
     margin-bottom: 32.5px;
+    align-items: center;
+    flex-shrink: 1;
+  }
+  .language {
+    display: flex;
     align-items: center;
     &__stroke {
       display: inline-block;

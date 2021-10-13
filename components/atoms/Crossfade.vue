@@ -32,10 +32,6 @@ export default {
   },
   data() {
     return {
-      styleObj: {
-        'clip-path': 'circle(100px at 50% 50%)',
-        transition: 'none',
-      },
       anim: null,
       currentSize: 100,
     }
@@ -117,7 +113,7 @@ export default {
   width: 100%;
   height: 100vh;
   will-change: clip-path;
-  clip-path: circle(100px at 50% 50%);
+  clip-path: circle(0px at 50% 50%);
   .video-content {
     min-width: 100%;
     min-height: 100%;

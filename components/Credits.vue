@@ -7,6 +7,8 @@
             class="link"
             href="https://twitter.com/zohryu"
             target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
             >@zohryu</a
           >)
         </li>
@@ -15,6 +17,8 @@
             class="link"
             href="https://twitter.com/DOnut_bone"
             target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
             >@DOnut_bone</a
           >)
         </li>
@@ -23,6 +27,8 @@
             class="link"
             href="https://twitter.com/gericass"
             target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
             >@gericass</a
           >)
         </li>

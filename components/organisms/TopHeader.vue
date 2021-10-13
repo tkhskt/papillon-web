@@ -12,18 +12,8 @@
           'hover-blue': hoverSpotify && xfdStarted,
           'hover-black': hoverSpotify && !xfdStarted,
         }"
-        @mouseover="
-          () => {
-            hoverSpotify = true
-            $store.dispatch('main/onChangeHoverTopLink', true)
-          }
-        "
-        @mouseleave="
-          () => {
-            hoverSpotify = false
-            $store.dispatch('main/onChangeHoverTopLink', false)
-          }
-        "
+        @mouseover="hoverSpotify = true"
+        @mouseleave="hoverSpotify = false"
         >Spotify</a
       >
       <a
@@ -32,18 +22,8 @@
           'hover-blue': hoverBandcamp && xfdStarted,
           'hover-black': hoverBandcamp && !xfdStarted,
         }"
-        @mouseover="
-          () => {
-            hoverBandcamp = true
-            $store.dispatch('main/onChangeHoverTopLink', true)
-          }
-        "
-        @mouseleave="
-          () => {
-            hoverBandcamp = false
-            $store.dispatch('main/onChangeHoverTopLink', false)
-          }
-        "
+        @mouseover="hoverBandcamp = true"
+        @mouseleave="hoverBandcamp = false"
         >Bandcamp</a
       >
       <a
@@ -52,18 +32,8 @@
           'hover-blue': hoverYouTube && xfdStarted,
           'hover-black': hoverYouTube && !xfdStarted,
         }"
-        @mouseover="
-          () => {
-            hoverYouTube = true
-            $store.dispatch('main/onChangeHoverTopLink', true)
-          }
-        "
-        @mouseleave="
-          () => {
-            hoverYouTube = false
-            $store.dispatch('main/onChangeHoverTopLink', false)
-          }
-        "
+        @mouseover="hoverYouTube = true"
+        @mouseleave="hoverYouTube = false"
         >Youtube</a
       >
     </div>
@@ -110,6 +80,7 @@ export default {
     color: white;
     font-size: 180px;
     @include font-hightower();
+    cursor: default;
   }
   .outer-links {
     display: flex;

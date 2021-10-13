@@ -6,10 +6,11 @@
         @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
         @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
       >
-        <li v-for="track in tracks" :key="track.name">
-          <a :href="track.url" target="_blank" class="track">{{
-            track.name
-          }}</a>
+        <li v-for="(track, index) in tracks" :key="track.name">
+          <a :href="track.url" target="_blank" class="track">
+            <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span
+            >{{ track.name }}</a
+          >
         </li>
       </ul>
     </div>
@@ -25,43 +26,43 @@ export default {
     return {
       tracks: [
         {
-          name: '01. effe - panta rhei',
+          name: 'effe - panta rhei',
           url: '',
         },
         {
-          name: '02. Hiroto Kudo (WIP)',
+          name: 'Hiroto Kudo (WIP)',
           url: '',
         },
         {
-          name: '03. callasoiled feat. smany - roar',
+          name: 'callasoiled feat. smany - roar',
           url: '',
         },
         {
-          name: '04. BUNGALANGIT - 神様が見てる',
+          name: 'BUNGALANGIT - 神様が見てる',
           url: '',
         },
         {
-          name: '05. Virtual Cat - Reminiscence',
+          name: 'Virtual Cat - Reminiscence',
           url: '',
         },
         {
-          name: '06. zohryu - butterfly effect',
+          name: 'zohryu - butterfly effect',
           url: '',
         },
         {
-          name: '07. thorn - microcosm (WIP)',
+          name: 'thorn - microcosm (WIP)',
           url: '',
         },
         {
-          name: '08. callasoiled feat. zohryu - state of mind',
+          name: 'callasoiled feat. zohryu - state of mind',
           url: '',
         },
         {
-          name: '09. ido ito - butterfly effect remix (WIP)',
+          name: 'ido ito - butterfly effect remix (WIP)',
           url: '',
         },
         {
-          name: '10. seiji takahashi - butterfly effect remix for zohyru',
+          name: 'seiji takahashi - butterfly effect remix for zohyru',
           url: '',
         },
       ],
@@ -125,6 +126,9 @@ export default {
     &:hover {
       transition: color 0.2s ease;
       color: $color-blue;
+    }
+    .index {
+      padding-right: 0.8em;
     }
   }
 }

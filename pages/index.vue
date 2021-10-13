@@ -70,6 +70,7 @@ export default {
         y: 0,
       },
       xfdGuideText: 'Play XFD',
+      cursorAnimation: null,
     }
   },
   computed: {
@@ -79,31 +80,34 @@ export default {
       'hoverTopLink',
       'hoverTrack',
       'xfdStarted',
+      'hoverLink',
     ]),
   },
   watch: {
-    hoverArtwork(newValue) {
+    hoverArtwork() {
       this.handleCursor()
     },
-    hoverTop(newValue) {
+    hoverTop() {
       this.handleCursor()
     },
-    hoverTopLink(newValue) {
+    hoverTopLink() {
       this.handleCursor()
     },
-    hoverTrack(newValue) {
+    hoverTrack() {
       this.handleCursor()
     },
     xfdStarted(newValue) {
       if (newValue) {
-        this.xfdGuideText = 'Pause XFD'
+        this.xfdGuideText = 'Pause'
       } else {
         this.xfdGuideText = 'Play XFD'
       }
     },
+    hoverLink() {
+      this.handleCursor()
+    },
   },
   mounted() {
-    // window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('mousemove', this.mouseMove)
     const observer = new MutationObserver((records) => {
       for (const mutation of records) {
@@ -140,8 +144,6 @@ export default {
     },
     mouseMove(event) {
       const cursor = this.$refs.cursor
-      // this.cursor.x = event.clientX
-      // this.cursor.y = event.clientY
       const component = this
       TweenLite.to(cursor, 0.5, {
         css: {
@@ -159,34 +161,53 @@ export default {
       const cursor = this.$refs.cursor
       const xfd = this.$refs.xfd
       const bandcamp = this.$refs.bandcamp
+      cursor.style.border = 'none'
+
       if (this.hoverTopLink) {
-        TweenLite.to(cursor, 0.5, {
+        this.cursorAnimation = TweenLite.to(cursor, 0.5, {
           css: {
-            background: '#ffffff',
-            width: '10px',
-            height: '10px',
+            background: 'transparent',
+            width: '50px',
+            height: '50px',
+          },
+          onStart() {
+            cursor.style.border = '1px solid'
           },
         })
         return
       }
       if (this.hoverTrack) {
-        TweenLite.to(cursor, 0.5, {
+        this.cursorAnimation = TweenLite.to(cursor, 0.5, {
           css: {
             background: 'transparent',
             width: '50px',
             height: '50px',
           },
         })
-        TweenLite.to(bandcamp, 0.5, {
+        this.cursorAnimation = TweenLite.to(bandcamp, 0.5, {
           onStart() {
             bandcamp.style.display = 'inline'
           },
         })
         return
       }
+      if (this.hoverLink) {
+        if (this.cursorAnimation != null) this.cursorAnimation.kill()
+        TweenLite.to(cursor, 0.2, {
+          css: {
+            background: 'transparent',
+            width: '50px',
+            height: '50px',
+          },
+          onStart() {
+            cursor.style.border = '1px solid'
+          },
+        })
+        return
+      }
 
       if (this.hoverTop && this.hoverArtwork) {
-        TweenLite.to(cursor, 0.5, {
+        this.cursorAnimation = TweenLite.to(cursor, 0.5, {
           css: {
             background: '#ffffff',
             width: '200px',
@@ -197,7 +218,7 @@ export default {
           },
         })
       } else if (this.hoverTop && !this.hoverArtwork) {
-        TweenLite.to(cursor, 0.5, {
+        this.cursorAnimation = TweenLite.to(cursor, 0.5, {
           css: {
             background: 'transparent',
             width: '200px',
@@ -208,7 +229,7 @@ export default {
           },
         })
       } else if (!this.hoverTop && this.hoverArtwork) {
-        TweenLite.to(cursor, 0.5, {
+        this.cursorAnimation = TweenLite.to(cursor, 0.5, {
           css: {
             background: '#ffffff',
             width: '200px',
@@ -219,7 +240,7 @@ export default {
           },
         })
       } else {
-        TweenLite.to(cursor, 0.5, {
+        this.cursorAnimation = TweenLite.to(cursor, 0.5, {
           css: {
             background: '#ffffff',
             width: '10px',
@@ -244,8 +265,8 @@ export default {
   align-items: center;
   left: 50%;
   top: 50%;
-  width: 10px;
-  height: 10px;
+  width: 0px;
+  height: 0px;
   transform: translate3d(-50%, -50%, 0);
   color: $color-white;
   background: $color-white;
@@ -255,9 +276,6 @@ export default {
   z-index: 100000;
   mix-blend-mode: difference;
   transition: mix-blend-mode 0.2s;
-  &__social {
-    background-color: #fff;
-  }
   &.bandcamp {
     mix-blend-mode: normal;
   }

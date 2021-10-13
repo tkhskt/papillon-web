@@ -1,7 +1,11 @@
 <template>
   <div class="header-container">
     <h1 class="title" :class="color">Papillon</h1>
-    <div class="outer-links">
+    <div
+      class="outer-links"
+      @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+      @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+    >
       <a class="link" :class="color">Spotify</a>
       <a class="link" :class="color">Bandcamp</a>
       <a class="link" :class="color">Youtube</a>
@@ -29,6 +33,7 @@ export default {
     font-size: 20px;
     transition: color 0.5s ease;
     @include font-hightower();
+    cursor: pointer;
   }
   .outer-links {
     display: flex;

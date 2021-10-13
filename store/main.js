@@ -10,6 +10,7 @@ export const state = () => ({
   fontLoaded: false,
   xfdStarted: false,
   xfdAnimationRunning: false,
+  hoverLink: false,
 })
 
 export const actions = {
@@ -34,6 +35,9 @@ export const actions = {
   onChangeXfdAnimationRunning({ commit }, running) {
     commit('setXfdAnimationRunning', running)
   },
+  onChangeHoverLink({ commit }, hover) {
+    commit('setHoverLink', hover)
+  },
 }
 
 export const mutations = {
@@ -57,5 +61,8 @@ export const mutations = {
   },
   setXfdAnimationRunning(state, value) {
     state.xfdAnimationRunning = value
+  },
+  setHoverLink(state, value) {
+    state.hoverLink = value
   },
 }
