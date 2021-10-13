@@ -81,6 +81,7 @@ export default {
     font-size: 180px;
     @include font-hightower();
     cursor: default;
+    user-select: none;
   }
   .outer-links {
     display: flex;

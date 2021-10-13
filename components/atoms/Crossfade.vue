@@ -5,6 +5,7 @@
       controls
       class="video-content"
       :class="{ invisible: hoverTopLink && !xfdStarted }"
+      @ended="videoEnded"
     >
       <source src="~assets/video/papillon.webm" type="video/webm" />
       <source src="~assets/video/papillon.mp4" type="video/mp4" />
@@ -59,47 +60,60 @@ export default {
       }px ${this.cursorY + this.scrollY}px)`
     },
     xfdStarted(oldValue, newValue) {
+      if (newValue) {
+        this.pause()
+      } else {
+        this.play()
+      }
+    },
+  },
+  methods: {
+    videoEnded() {
+      const video = this.$refs.xfd
+      video.currentTime = 0
+
+      this.$store.dispatch('main/onChangeXfdStarted', false)
+    },
+    play() {
       const width = window.innerWidth
       const height = window.innerHeight
-      if (newValue) {
-        this.$store.dispatch('main/onChangeXfdAnimationRunning', true)
+      this.$store.dispatch('main/onChangeXfdAnimationRunning', true)
 
-        const sizeObj = {
-          size: this.currentSize,
-        }
-        if (this.anim != null) this.anim.kill()
-        const component = this
-        this.anim = TweenLite.to(sizeObj, 1, {
-          size: 100,
-          onUpdate() {
-            component.$refs.container.style.clipPath = `circle(${sizeObj.size}px at ${component.cursorX}px ${component.cursorY}px)`
-            component.currentSize = sizeObj.size
-          },
-          onComplete() {
-            component.$store.dispatch('main/onChangeXfdAnimationRunning', false)
-          },
-        })
-        this.$refs.xfd.pause()
-      } else {
-        this.$store.dispatch('main/onChangeXfdAnimationRunning', true)
-
-        const sizeObj = {
-          size: this.currentSize,
-        }
-        if (this.anim != null) this.anim.kill()
-        const component = this
-        this.anim = TweenLite.to(sizeObj, 1, {
-          size: Math.sqrt(width * width + height * height),
-          onUpdate() {
-            component.$refs.container.style.clipPath = `circle(${sizeObj.size}px at ${component.cursorX}px ${component.cursorY}px)`
-            component.currentSize = sizeObj.size
-          },
-          onComplete() {
-            component.$store.dispatch('main/onChangeXfdAnimationRunning', false)
-          },
-        })
-        this.$refs.xfd.play()
+      const sizeObj = {
+        size: this.currentSize,
       }
+      if (this.anim != null) this.anim.kill()
+      const component = this
+      this.anim = TweenLite.to(sizeObj, 1, {
+        size: Math.sqrt(width * width + height * height),
+        onUpdate() {
+          component.$refs.container.style.clipPath = `circle(${sizeObj.size}px at ${component.cursorX}px ${component.cursorY}px)`
+          component.currentSize = sizeObj.size
+        },
+        onComplete() {
+          component.$store.dispatch('main/onChangeXfdAnimationRunning', false)
+        },
+      })
+      this.$refs.xfd.play()
+    },
+    pause() {
+      this.$store.dispatch('main/onChangeXfdAnimationRunning', true)
+      const sizeObj = {
+        size: this.currentSize,
+      }
+      if (this.anim != null) this.anim.kill()
+      const component = this
+      this.anim = TweenLite.to(sizeObj, 1, {
+        size: 100,
+        onUpdate() {
+          component.$refs.container.style.clipPath = `circle(${sizeObj.size}px at ${component.cursorX}px ${component.cursorY}px)`
+          component.currentSize = sizeObj.size
+        },
+        onComplete() {
+          component.$store.dispatch('main/onChangeXfdAnimationRunning', false)
+        },
+      })
+      this.$refs.xfd.pause()
     },
   },
 }
