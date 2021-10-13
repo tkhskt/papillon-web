@@ -40,6 +40,12 @@ export default {
       &:nth-child(2) {
         margin: 0 60px;
       }
+      text-decoration: none;
+      transition: color 0.2s ease;
+      &:hover {
+        transition: color 0.2s ease;
+        color: $color-blue;
+      }
     }
   }
   .top {

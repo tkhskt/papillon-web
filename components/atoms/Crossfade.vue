@@ -4,7 +4,7 @@
       ref="xfd"
       controls
       class="video-content"
-      :class="{ invisible: hoverTopLink }"
+      :class="{ invisible: hoverTopLink && !xfdStarted }"
     >
       <source src="~assets/video/papillon.webm" type="video/webm" />
       <source src="~assets/video/papillon.mp4" type="video/mp4" />

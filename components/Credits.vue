@@ -2,9 +2,30 @@
   <div class="credits-container">
     <div class="left">
       <ul class="credit-list">
-        <li class="credit">Produce - zohryu (@zohryu)</li>
-        <li class="credit">Illustration - 塚本穴骨 (@DOnut_bone)</li>
-        <li class="credit">Web creation - thorn (@gericass)</li>
+        <li class="credit">
+          Produce - zohryu (<a
+            class="link"
+            href="https://twitter.com/zohryu"
+            target="_blank"
+            >@zohryu</a
+          >)
+        </li>
+        <li class="credit">
+          Illustration - 塚本穴骨 (<a
+            class="link"
+            href="https://twitter.com/DOnut_bone"
+            target="_blank"
+            >@DOnut_bone</a
+          >)
+        </li>
+        <li class="credit">
+          Web creation - thorn (<a
+            class="link"
+            href="https://twitter.com/gericass"
+            target="_blank"
+            >@gericass</a
+          >)
+        </li>
         <li class="credit">Special thanks -</li>
       </ul>
     </div>
@@ -44,6 +65,17 @@
   letter-spacing: 0.05em;
   line-height: 48px;
   color: $color-white;
+  .credit {
+    .link {
+      color: $color-white;
+      transition: color 0.2s ease;
+      text-decoration: none;
+      &:hover {
+        color: $color-blue;
+        transition: color 0.2s ease;
+      }
+    }
+  }
 }
 
 .section-title {
