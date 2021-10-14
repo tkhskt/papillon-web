@@ -108,6 +108,7 @@ export default {
     },
   },
   mounted() {
+    this.$adobeFonts(document)
     window.addEventListener('mousemove', this.mouseMove)
     const observer = new MutationObserver((records) => {
       for (const mutation of records) {
