@@ -7,10 +7,13 @@ export const state = () => ({
   hoverArtwork: false,
   hoverTopLink: false,
   hoverTrack: false,
-  fontLoaded: false,
   xfdStarted: false,
   xfdAnimationRunning: false,
   hoverLink: false,
+  fontLoaded: false,
+  videoLoaded: false,
+  artworkLoaded: false,
+  loadCompleted: false,
 })
 
 export const actions = {
@@ -38,6 +41,15 @@ export const actions = {
   onChangeHoverLink({ commit }, hover) {
     commit('setHoverLink', hover)
   },
+  onLoadFontCompleted({ commit }, load) {
+    commit('setFontLoaded', load)
+  },
+  onLoadVideoCompleted({ commit }, load) {
+    commit('setVideoLoaded', load)
+  },
+  onLoadArtworkCompleted({ commit }, load) {
+    commit('setArtworkLoaded', load)
+  },
 }
 
 export const mutations = {
@@ -64,5 +76,14 @@ export const mutations = {
   },
   setHoverLink(state, value) {
     state.hoverLink = value
+  },
+  setFontLoaded(state, value) {
+    state.fontLoaded = value
+  },
+  setVideoLoaded(state, value) {
+    state.videoLoaded = value
+  },
+  setArtworkLoaded(state, value) {
+    state.artworkLoaded = value
   },
 }

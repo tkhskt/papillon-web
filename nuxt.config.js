@@ -29,6 +29,9 @@ export default {
     {
       src: '~/plugins/fonts',
     },
+    {
+      src: '~/plugins/lock',
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

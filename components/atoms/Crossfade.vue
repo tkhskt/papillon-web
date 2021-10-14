@@ -6,6 +6,7 @@
       class="video-content"
       :class="{ invisible: hoverTopLink && !xfdStarted }"
       @ended="videoEnded"
+      @canplay="$store.dispatch('main/onLoadVideoCompleted', true)"
     >
       <source src="~assets/video/papillon.webm" type="video/webm" />
       <source src="~assets/video/papillon.mp4" type="video/mp4" />
@@ -40,6 +41,7 @@ export default {
   computed: {
     ...mapState('main', ['hoverTopLink', 'xfdStarted', 'xfdAnimationRunning']),
   },
+
   watch: {
     cursorX(oldValue, newValue) {
       if (this.xfdStarted || this.xfdAnimationRunning) return
@@ -66,6 +68,11 @@ export default {
         this.play()
       }
     },
+  },
+  mounted() {
+    if (this.$refs.xfd.readyState === 4) {
+      this.$store.dispatch('main/onLoadVideoCompleted', true)
+    }
   },
   methods: {
     videoEnded() {

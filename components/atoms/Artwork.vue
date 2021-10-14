@@ -16,6 +16,7 @@
         class="artwork-img"
         src="~assets/img/papillon.png"
         :style="styleObj"
+        @load="$store.dispatch('main/onLoadArtworkCompleted', true)"
       />
     </picture>
   </div>
@@ -54,12 +55,28 @@ export default {
       this.artworkVisible = !newValue || this.scrollY > window.innerHeight
     },
   },
+  mounted() {
+    if (this.supportWebP()) {
+      this.$store.dispatch('main/onLoadArtworkCompleted', true)
+    }
+  },
   methods: {
     mouseOver() {
       this.$store.dispatch('main/onChangeHoverArtwork', true)
     },
     mouseLeave() {
       this.$store.dispatch('main/onChangeHoverArtwork', false)
+    },
+    supportWebP() {
+      const elem = document.createElement('canvas')
+
+      if (elem.getContext && elem.getContext('2d')) {
+        // was able or not to get WebP representation
+        return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0
+      } else {
+        // very old browser like IE 8, canvas not supported
+        return false
+      }
     },
   },
 }

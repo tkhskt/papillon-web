@@ -1,11 +1,17 @@
 /* eslint-disable */
 
-export default function ({ app }, inject) {
+export default function ({ app, store }, inject) {
   const adobeFonts = (d) => {
     var config = {
         kitId: 'ytp1iqt',
         scriptTimeout: 3000,
         async: true,
+        active: function () {
+          store.dispatch('main/onLoadFontCompleted', true)
+        },
+        inactive: function () {
+          store.dispatch('main/onLoadFontCompleted', true)
+        },
       },
       h = d.documentElement,
       t = setTimeout(function () {

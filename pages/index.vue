@@ -1,5 +1,6 @@
 <template>
   <div>
+    <splash class="splash" />
     <transition name="header">
       <Header
         v-if="currentSection != 'top'"
@@ -106,9 +107,10 @@ export default {
     hoverLink() {
       this.handleCursor()
     },
+    loadCompleted() {},
   },
   mounted() {
-    this.$adobeFonts(document)
+    this.$adobeFonts(document, this.$store)
     window.addEventListener('mousemove', this.mouseMove)
     const observer = new MutationObserver((records) => {
       for (const mutation of records) {
@@ -116,8 +118,8 @@ export default {
           const a = window
             .getComputedStyle(mutation.target)
             .getPropertyValue('transform')
-          const matrexArr = a.split(', ')
-          const translateY = parseInt(matrexArr[5])
+          const matrixArr = a.split(', ')
+          const translateY = parseInt(matrixArr[5])
           this.scrollY = -translateY
           this.handleScroll(this.scrollY)
         }
@@ -258,6 +260,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.splash {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+}
+
 .cursor {
   pointer-events: none;
   position: fixed;
@@ -351,6 +360,7 @@ export default {
     left: 0;
     right: 0;
     margin: auto;
+    z-index: 50;
   }
 }
 
@@ -360,6 +370,7 @@ export default {
   right: 0;
   margin: auto;
   bottom: -14.3vw;
+  z-index: 60;
 }
 
 .header-enter-active,
