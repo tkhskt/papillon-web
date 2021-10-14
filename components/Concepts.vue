@@ -31,56 +31,33 @@
         <p v-if="selectedLang == 'en'" class="concepts--en">
           Papillon is a passion project that I designed and developed over the
           course of two years.<br />
-          It goes without saying, but as a fan of the doujin music scene for
-          over twelve years, this endeavour has been nothing less than a dream
-          come true.<br />
-          <br />
-          Initially, I strove to organize a small album themed around
-          electronica, and other genres such as downtempo, lo-fi and ambient.
-          Over time, I began to invite various members of the Japanese
-          electronic music scene to participate in the project. The enthusiastic
-          response I received from the producers I invited encouraged me forward
-          with a gentle ambition.<br />
-          Indeed, I could not have made it this far without the help I have
-          received from everyone.<br />
-          <br />
-          My goals for this album were to revive a sense of nostalgia towards
-          the electronica genre, as well as a fixation on time travel,
-          butterflies and the ideal of beauty within music.<br />
-          <br />
-          For this project, I want the artists to feel the love and passion of
-          their fans.<br />
-          I want these wonderful individuals to remember that, no matter what,
-          they will always have a place in zohryu's heart.<br />
-          Without them, zohryu would not exist.<br />
-          <br />
-          From the bottom of my heart, to the listeners, to the artists, to my
-          friends...<br />
-          Thank you.
-        </p>
-        <p v-if="selectedLang == 'ja'" class="concepts--ja">
-          Papillon is a passion project that I designed and developed over the
-          course of two years.<br />
           <br />
           Initially, I strove to organize a small album themed around
           electronica, and other genres such as downtempo, lo-fi and ambient.
           Over time, I began to invite various members of the Japanese
           electronic music scene to participate in the project. <br />
           <br />
-          The enthusiastic response I received from the producers I invited
-          encouraged me forward with a gentle ambition.<br />
           My goals for this album were to revive a sense of nostalgia towards
           the electronica genre, as well as a fixation on time travel,
           butterflies and the ideal of beauty within music.<br />
           <br />
           For this project, I want the artists to feel the love and passion of
           their fans.<br />
-          I want these wonderful individuals to remember that, no matter what,
-          they will always have a place in zohryu's heart.<br />
           <br />
           From the bottom of my heart, to the listeners, to the artists, to my
           friends...<br />
           Thank you.
+        </p>
+        <p v-if="selectedLang == 'ja'" class="concepts--ja">
+          Papillonは、私が2年間かけてデザインし、開発した情熱的なプロジェクトです。<br />
+          <br />
+          最初は、エレクトロニカを中心に、ダウンテンポ、ローファイ、アンビエントなどのジャンルをテーマにした小さなアルバムを作ろうとしていました。そのうちに、日本の電子音楽シーンのさまざまなメンバーに参加してもらうようになりました。<br />
+          <br />
+          このアルバムの目的は、エレクトロニカというジャンルへのノスタルジーと、タイムトラベル、蝶、音楽の中の美へのこだわりを復活させることでした。<br />
+          <br />
+          このプロジェクトでは、アーティストにファンの愛と情熱を感じてもらいたいと思っています。<br />
+          <br />
+          心の底から、リスナーの皆さん、アーティストの皆さん、そして私の友人たちへ......。<br />
         </p>
         <div class="from">
           <span class="stroke"></span>
