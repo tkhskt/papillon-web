@@ -32,6 +32,7 @@ export default {
   methods: {
     clickTitle() {
       window.scroll({ top: 0 })
+      this.$store.dispatch('main/onChangeHoverLink', false)
     },
   },
 }
