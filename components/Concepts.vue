@@ -29,23 +29,58 @@
           </div>
         </div>
         <p v-if="selectedLang == 'en'" class="concepts--en">
-          I really wanted to bring back together many members of the Japanese
-          electronica scene (previous members of fusz. for example). The key
-          concepts of this album were - The main genres (electronica, lo-fi,
-          downtempo, ambient) - A fixation on nostalgia, time travel and
-          butterflies - A revival of the small Japanese inner electronica scene
-          In summary, I wanted to bring people from different scenes together
-          for a project every fan will love. It is a show of generosity, for a
-          really big fan from overseas. I really want the artists to feel loved.
+          Papillon is a passion project that I designed and developed over the
+          course of two years.<br />
+          It goes without saying, but as a fan of the doujin music scene for
+          over twelve years, this endeavour has been nothing less than a dream
+          come true.<br />
+          <br />
+          Initially, I strove to organize a small album themed around
+          electronica, and other genres such as downtempo, lo-fi and ambient.
+          Over time, I began to invite various members of the Japanese
+          electronic music scene to participate in the project. The enthusiastic
+          response I received from the producers I invited encouraged me forward
+          with a gentle ambition.<br />
+          Indeed, I could not have made it this far without the help I have
+          received from everyone.<br />
+          <br />
+          My goals for this album were to revive a sense of nostalgia towards
+          the electronica genre, as well as a fixation on time travel,
+          butterflies and the ideal of beauty within music.<br />
+          <br />
+          For this project, I want the artists to feel the love and passion of
+          their fans.<br />
+          I want these wonderful individuals to remember that, no matter what,
+          they will always have a place in zohryu's heart.<br />
+          Without them, zohryu would not exist.<br />
+          <br />
+          From the bottom of my heart, to the listeners, to the artists, to my
+          friends...<br />
+          Thank you.
         </p>
         <p v-if="selectedLang == 'ja'" class="concepts--ja">
-          私は、日本のエレクトロニカ・シーンの多くのメンバー（例えばfusz.の前のメンバー）を再び集めたいと思っていました。
-          (例えば、fusz.の前メンバー) このアルバムのキーコンセプトは -
-          主なジャンル（エレクトロニカ、ローファイ、ダウンテンポ、アンビエント -
-          ノスタルジー、タイムトラベル、蝶々へのこだわり -
-          日本の小さなインナー・エレクトロニカ・シーンの再興
-          要約すると、様々なシーンの人たちを集めて、すべてのファンに愛されるプロジェクトにしたかったのです。
-          これは、海外の大ファンに対する寛大さの表れでもあります。アーティストたちには、愛されていることを実感してもらいたいですね。
+          Papillon is a passion project that I designed and developed over the
+          course of two years.<br />
+          <br />
+          Initially, I strove to organize a small album themed around
+          electronica, and other genres such as downtempo, lo-fi and ambient.
+          Over time, I began to invite various members of the Japanese
+          electronic music scene to participate in the project. <br />
+          <br />
+          The enthusiastic response I received from the producers I invited
+          encouraged me forward with a gentle ambition.<br />
+          My goals for this album were to revive a sense of nostalgia towards
+          the electronica genre, as well as a fixation on time travel,
+          butterflies and the ideal of beauty within music.<br />
+          <br />
+          For this project, I want the artists to feel the love and passion of
+          their fans.<br />
+          I want these wonderful individuals to remember that, no matter what,
+          they will always have a place in zohryu's heart.<br />
+          <br />
+          From the bottom of my heart, to the listeners, to the artists, to my
+          friends...<br />
+          Thank you.
         </p>
         <div class="from">
           <span class="stroke"></span>
@@ -130,10 +165,12 @@ export default {
     &--en {
       @include font-hightower();
       line-height: 26px;
+      letter-spacing: 0.05em;
     }
     &--ja {
       @include font-hightower();
       line-height: 26px;
+      letter-spacing: 0.05em;
     }
   }
   .from {
