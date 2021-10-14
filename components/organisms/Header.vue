@@ -1,6 +1,14 @@
 <template>
   <div class="header-container">
-    <h1 class="title" :class="color">Papillon</h1>
+    <h1
+      class="title"
+      :class="color"
+      @click="clickTitle"
+      @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+      @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+    >
+      Papillon
+    </h1>
     <div
       class="outer-links"
       @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
@@ -19,6 +27,11 @@ export default {
     color: {
       type: String,
       default: 'top',
+    },
+  },
+  methods: {
+    clickTitle() {
+      window.scroll({ top: 0 })
     },
   },
 }
