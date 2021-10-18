@@ -96,6 +96,7 @@ export default {
   display: flex;
   height: 100vh;
   width: 100%;
+  min-height: $min-height-section;
   .left {
     display: flex;
     justify-content: center;

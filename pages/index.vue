@@ -135,9 +135,20 @@ export default {
   methods: {
     handleScroll() {
       const imageOffset = window.innerHeight * 0
-      if (this.scrollY > window.innerHeight * 3 + imageOffset) {
+      const minHeight = 700
+      if (
+        this.scrollY >
+        window.innerHeight +
+          Math.max(window.innerHeight, minHeight) * 2 +
+          imageOffset
+      ) {
         this.currentSection = 'credits'
-      } else if (this.scrollY > window.innerHeight * 2 + imageOffset) {
+      } else if (
+        this.scrollY >
+        window.innerHeight +
+          Math.max(window.innerHeight, minHeight) +
+          imageOffset
+      ) {
         this.currentSection = 'concepts'
       } else if (this.scrollY > window.innerHeight * 0.8) {
         this.currentSection = 'tracks'

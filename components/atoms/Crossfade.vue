@@ -2,7 +2,6 @@
   <div ref="container" class="crossfade-container">
     <video
       ref="xfd"
-      controls
       class="video-content"
       :class="{ invisible: hoverTopLink && !xfdStarted }"
       @ended="videoEnded"

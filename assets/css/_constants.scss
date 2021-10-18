@@ -2,6 +2,7 @@ $color-white: rgba(255, 255, 255, 1);
 $color-blue: rgba(0, 189, 224, 1);
 $color-black: rgba(46, 46, 46, 1);
 $color-purple: rgba(49, 39, 92, 1);
+$min-height-section: 700px;
 
 @mixin font-hightower() {
   font-family: hightower-text, source-han-serif-japanese, serif;
@@ -13,4 +14,15 @@ $color-purple: rgba(49, 39, 92, 1);
   font-family: acumin-pro, noto-sans-cjk-jp, sans-serif;
   font-weight: 300;
   font-style: normal;
+}
+
+$breakpoints: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 1024px)',
+);
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
 }
