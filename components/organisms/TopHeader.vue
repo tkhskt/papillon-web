@@ -82,10 +82,16 @@ export default {
     @include font-hightower();
     cursor: default;
     user-select: none;
+    @include mq() {
+      font-size: 48px;
+    }
   }
   .outer-links {
     display: flex;
     color: $color-white;
+    @include mq() {
+      display: none;
+    }
     .link {
       font-size: 18px;
       cursor: pointer;

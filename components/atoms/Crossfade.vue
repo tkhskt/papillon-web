@@ -38,7 +38,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('main', ['hoverTopLink', 'xfdStarted', 'xfdAnimationRunning']),
+    ...mapState('main', [
+      'hoverTopLink',
+      'xfdStarted',
+      'xfdAnimationRunning',
+      'isMobile',
+    ]),
   },
 
   watch: {

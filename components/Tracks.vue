@@ -50,7 +50,7 @@ export default {
           url: '',
         },
         {
-          name: 'thorn - microcosm (WIP)',
+          name: 'N - microcosm (WIP)',
           url: '',
         },
         {
@@ -97,12 +97,26 @@ export default {
   height: 100vh;
   width: 100%;
   min-height: $min-height-section;
+  @include mq() {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 25px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
   .left {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
+    @include mq() {
+      width: 100%;
+      height: auto;
+      order: 2;
+      justify-content: flex-start;
+      margin-top: 77px;
+    }
   }
   .right {
     display: flex;
@@ -110,6 +124,12 @@ export default {
     align-items: center;
     width: 50%;
     height: 100%;
+    @include mq() {
+      width: 100%;
+      height: auto;
+      justify-content: flex-start;
+      order: 1;
+    }
   }
 }
 
@@ -124,6 +144,10 @@ export default {
     color: $color-black;
     text-decoration: none;
     transition: color 0.2s ease;
+    @include mq() {
+      font-size: 12px;
+      line-height: 32px;
+    }
     &:hover {
       transition: color 0.2s ease;
       color: $color-blue;
@@ -138,5 +162,8 @@ export default {
   @include font-hightower();
   font-size: 120px;
   color: $color-black;
+  @include mq() {
+    font-size: 36px;
+  }
 }
 </style>

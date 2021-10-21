@@ -9,8 +9,26 @@
       <top-header class="top-header" />
     </div>
     <div class="background">
-      <img class="stroke--top" src="~assets/img/stroke_top.svg" />
-      <img class="stroke--bottom" src="~assets/img/stroke_bottom.svg" />
+      <img
+        v-if="!isMobile"
+        class="stroke--top"
+        src="~assets/img/stroke_top.svg"
+      />
+      <img
+        v-if="isMobile"
+        class="stroke--top"
+        src="~assets/img/stroke_top_mobile.svg"
+      />
+      <img
+        v-if="!isMobile"
+        class="stroke--bottom"
+        src="~assets/img/stroke_bottom.svg"
+      />
+      <img
+        v-if="isMobile"
+        class="stroke--bottom"
+        src="~assets/img/stroke_bottom_mobile.svg"
+      />
       <p class="scroll-nav">scroll to navigate</p>
     </div>
     <artwork class="artwork" :scroll-y="scrollY" />
@@ -27,7 +45,12 @@ export default {
     },
   },
   computed: {
-    ...mapState('main', ['hoverArtwork', 'hoverTopLink', 'xfdStarted']),
+    ...mapState('main', [
+      'hoverArtwork',
+      'hoverTopLink',
+      'xfdStarted',
+      'isMobile',
+    ]),
   },
   methods: {
     onHoverContent() {
@@ -52,17 +75,31 @@ export default {
   position: relative;
   height: 100vh;
   width: 100%;
+  @include mq() {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: calc(10vh + 67px);
+  }
   .content {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
+    @include mq() {
+      position: relative;
+      top: auto;
+      left: auto;
+    }
     .top-header {
       padding-left: 6.7vw;
       padding-right: 5.2vw;
       padding-top: 13vh;
       z-index: 10;
+      @include mq() {
+        padding-top: 11.3vh;
+        padding-left: 25px;
+      }
     }
   }
   .background {
@@ -70,6 +107,8 @@ export default {
     top: 0;
     left: 0;
     // background: $color-blue;
+    @include mq() {
+    }
     width: 100%;
     height: 100%;
     .scroll-nav {
@@ -79,7 +118,6 @@ export default {
       align-items: center;
       bottom: 3vh;
       left: 3.8vw;
-      left: 74px;
       width: 77px;
       height: 77px;
       font-size: 12px;
@@ -87,13 +125,26 @@ export default {
       text-align: center;
       border: solid 1px white;
       border-radius: 38.5px;
+      @include mq() {
+        position: absolute;
+        left: auto;
+        right: 25px;
+        width: 67px;
+        height: 67px;
+      }
     }
   }
   .artwork {
     position: absolute;
     top: 50vh;
     right: 5.2vw;
-    // z-index: 5;
+    @include mq() {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 7.8vh;
+      padding: 0 25px;
+    }
   }
 }
 

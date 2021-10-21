@@ -83,12 +83,27 @@ export default {
   height: 100vh;
   width: 100%;
   min-height: $min-height-section;
+
+  @include mq() {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 25px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
   .left {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
+    @include mq() {
+      width: 100%;
+      height: auto;
+      order: 1;
+      justify-content: flex-start;
+      margin-top: 77px;
+    }
   }
   .right {
     display: flex;
@@ -96,6 +111,12 @@ export default {
     align-items: center;
     width: 50%;
     height: 100%;
+    @include mq() {
+      width: 100%;
+      height: auto;
+      justify-content: flex-start;
+      order: 2;
+    }
   }
 }
 
@@ -103,16 +124,26 @@ export default {
   @include font-hightower();
   font-size: 120px;
   color: $color-white;
+  @include mq() {
+    font-size: 36px;
+  }
 }
 
 .concepts-content {
   color: $color-white;
   padding: 0 11.4vw;
+  @include mq() {
+    padding: 0;
+    margin-top: 77px;
+  }
   .language-wrapper {
     display: flex;
     margin-bottom: 32.5px;
     align-items: center;
     flex-shrink: 1;
+    @include mq() {
+      margin-bottom: 25.5px;
+    }
   }
   .language {
     display: flex;
@@ -128,11 +159,17 @@ export default {
       font-size: 18px;
       transition: opacity 0.1s ease;
       cursor: pointer;
+      @include mq() {
+        font-size: 16px;
+      }
     }
     &__ja {
       font-size: 18px;
       transition: opacity 0.1s ease;
       cursor: pointer;
+      @include mq() {
+        font-size: 16px;
+      }
     }
     .unselected {
       opacity: 0.45;
@@ -143,11 +180,19 @@ export default {
       @include font-hightower();
       line-height: 26px;
       letter-spacing: 0.05em;
+      @include mq() {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
     &--ja {
       @include font-hightower();
       line-height: 26px;
       letter-spacing: 0.05em;
+      @include mq() {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
   }
   .from {
@@ -158,6 +203,9 @@ export default {
     font-size: 24px;
     @include font-hightower();
     margin-top: 5px;
+    @include mq() {
+      font-size: 18px;
+    }
     .stroke {
       display: inline-block;
       content: '';

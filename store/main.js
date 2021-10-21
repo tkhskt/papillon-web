@@ -3,6 +3,7 @@ export const state = () => ({
     width: 0,
     height: 0,
   },
+  isMobile: false,
   hoverTop: false,
   hoverArtwork: false,
   hoverTopLink: false,
@@ -18,7 +19,7 @@ export const state = () => ({
 
 export const actions = {
   onResize({ commit }, size) {
-    commit('setWindowSize', size)
+    commit('setIsMobile', size)
   },
   onChangeHoverTop({ commit }, hover) {
     commit('setHoverTop', hover)
@@ -56,6 +57,9 @@ export const mutations = {
   setWindowSize(state, value) {
     state.windowSize = value
   },
+  setIsMobile(state, value) {
+    state.isMobile = value.width < 1025
+  },
   setHoverTop(state, value) {
     state.hoverTop = value
   },
@@ -69,6 +73,10 @@ export const mutations = {
     state.hoverTrack = value
   },
   setXfdStarted(state, value) {
+    if (state.isMobile) {
+      state.xfdStarted = false
+      return
+    }
     state.xfdStarted = value
   },
   setXfdAnimationRunning(state, value) {

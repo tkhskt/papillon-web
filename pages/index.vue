@@ -15,6 +15,7 @@
       :class="currentSection"
     >
       <crossfade
+        v-if="!isMobile"
         class="crossfade"
         :cursor-x="cursor.x"
         :cursor-y="cursor.y"
@@ -27,11 +28,16 @@
         :cursor-y="cursor.y"
       />
       <div class="sections">
-        <span class="vertical-line"></span>
+        <span v-if="!isMobile" class="vertical-line"></span>
         <tracks ref="tracks" class="tracks" />
         <concepts ref="concepts" class="concepts" />
         <credits ref="credits" class="credits" />
       </div>
+      <span
+        v-if="isMobile"
+        class="vertical-line"
+        :class="{ visible: showMobileLine }"
+      ></span>
       <gradient-circle class="circle" />
     </div>
     <div ref="cursor" class="cursor" :class="{ bandcamp: hoverTrack }">
@@ -72,6 +78,7 @@ export default {
       },
       xfdGuideText: 'Play XFD',
       cursorAnimation: null,
+      showMobileLine: false,
     }
   },
   computed: {
@@ -82,6 +89,7 @@ export default {
       'hoverTrack',
       'xfdStarted',
       'hoverLink',
+      'isMobile',
     ]),
   },
   watch: {
@@ -110,8 +118,19 @@ export default {
     loadCompleted() {},
   },
   mounted() {
+    const store = this.$store
     this.$adobeFonts(document, this.$store)
     window.addEventListener('mousemove', this.mouseMove)
+    window.addEventListener('resize', () => {
+      store.dispatch('main/onResize', {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    })
+    store.dispatch('main/onResize', {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
     const observer = new MutationObserver((records) => {
       for (const mutation of records) {
         if (mutation.type === 'attributes') {
@@ -121,7 +140,11 @@ export default {
           const matrixArr = a.split(', ')
           const translateY = parseInt(matrixArr[5])
           this.scrollY = -translateY
-          this.handleScroll(this.scrollY)
+          if (this.isMobile) {
+            this.handleMobileScroll()
+          } else {
+            this.handleScroll()
+          }
         }
       }
     })
@@ -154,6 +177,28 @@ export default {
         this.currentSection = 'tracks'
       } else {
         this.currentSection = 'top'
+      }
+    },
+    handleMobileScroll() {
+      const minHeight = 700
+      if (
+        this.scrollY >
+        Math.max(window.innerHeight, minHeight) * 2 +
+          Math.max(window.innerHeight, minHeight) * 0.5
+      ) {
+        this.currentSection = 'credits'
+      } else if (
+        this.scrollY >
+        Math.max(window.innerHeight, minHeight) +
+          Math.max(window.innerHeight, minHeight) * 0.5
+      ) {
+        this.currentSection = 'concepts'
+      } else if (this.scrollY > window.innerHeight * 0.5) {
+        this.currentSection = 'tracks'
+        this.showMobileLine = true
+      } else {
+        this.currentSection = 'top'
+        this.showMobileLine = false
       }
     },
     mouseMove(event) {
@@ -297,6 +342,9 @@ export default {
   z-index: 100000;
   mix-blend-mode: difference;
   transition: mix-blend-mode 0.2s;
+  @include mq() {
+    display: none;
+  }
   &.bandcamp {
     mix-blend-mode: normal;
   }
@@ -352,26 +400,44 @@ export default {
   padding: 0 58px;
   z-index: 2000;
   width: 100%;
+  @include mq() {
+    padding: 25px;
+    top: 0;
+  }
 }
 
 .top {
   margin-bottom: 36.7vh;
+  @include mq() {
+    margin-bottom: 0;
+  }
   // background: $color-white;
 }
 
 .sections {
   position: relative;
-  .vertical-line {
-    position: absolute;
-    display: inline-block;
-    height: 100%;
-    width: 1px;
-    background: $color-white;
-    mix-blend-mode: difference;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 50;
+}
+
+.vertical-line {
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  background: $color-white;
+  mix-blend-mode: difference;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 50;
+  @include mq() {
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    left: 12.5px;
+    right: auto;
+    &.visible {
+      opacity: 1;
+    }
   }
 }
 
@@ -382,6 +448,11 @@ export default {
   margin: auto;
   bottom: -14.3vw;
   z-index: 60;
+  @include mq() {
+    bottom: -50vmin;
+    left: -50vmin;
+    right: auto;
+  }
 }
 
 .header-enter-active,

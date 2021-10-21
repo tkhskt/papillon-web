@@ -52,6 +52,9 @@ export default {
   .outer-links {
     display: flex;
     color: white;
+    @include mq() {
+      display: none;
+    }
     .link {
       transition: color 0.5s ease;
       font-size: 14px;

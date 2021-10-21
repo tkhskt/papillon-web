@@ -14,7 +14,7 @@
       />
       <img
         class="artwork-img"
-        src="~assets/img/papillon.png"
+        src="~assets/img/papillon.jpg"
         :style="styleObj"
         @load="$store.dispatch('main/onLoadArtworkCompleted', true)"
       />
@@ -98,6 +98,10 @@ export default {
   height: 86.7vh;
   object-fit: cover;
   object-position: top;
-  // transition: object-position 0.2s ease-out;
+  @include mq() {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
 }
 </style>
