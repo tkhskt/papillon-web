@@ -120,6 +120,7 @@ export default {
   mounted() {
     const store = this.$store
     this.$adobeFonts(document, this.$store)
+    this.$initLuxy()
     window.addEventListener('mousemove', this.mouseMove)
     window.addEventListener('resize', () => {
       store.dispatch('main/onResize', {
