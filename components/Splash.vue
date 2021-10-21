@@ -18,16 +18,29 @@ export default {
     }
   },
   computed: {
-    ...mapState('main', ['fontLoaded', 'videoLoaded', 'artworkLoaded']),
+    ...mapState('main', [
+      'fontLoaded',
+      'videoLoaded',
+      'artworkLoaded',
+      'isMobile',
+    ]),
   },
   watch: {
     fontLoaded(loaded) {
+      if (this.isMobile) {
+        this.loadCompleted = loaded && this.artworkLoaded
+        return
+      }
       this.loadCompleted = loaded && this.videoLoaded && this.artworkLoaded
     },
     videoLoaded(loaded) {
       this.loadCompleted = loaded && this.fontLoaded && this.artworkLoaded
     },
     artworkLoaded(loaded) {
+      if (this.isMobile) {
+        this.loadCompleted = loaded && this.fontLoaded
+        return
+      }
       this.loadCompleted = loaded && this.fontLoaded && this.videoLoaded
     },
     loadCompleted() {

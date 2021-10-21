@@ -7,10 +7,10 @@ export default function ({ app, store }, inject) {
         scriptTimeout: 3000,
         async: true,
         active: function () {
-          // store.dispatch('main/onLoadFontCompleted', true)
+          store.dispatch('main/onLoadFontCompleted', true)
         },
         inactive: function () {
-          // store.dispatch('main/onLoadFontCompleted', true)
+          store.dispatch('main/onLoadFontCompleted', true)
         },
       },
       h = d.documentElement,
