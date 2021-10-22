@@ -6,11 +6,43 @@
         @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
         @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
       >
-        <li v-for="(track, index) in tracks" :key="track.name">
+        <li
+          v-for="(track, index) in tracks"
+          :key="track.name"
+          class="list-item"
+        >
           <a :href="track.url" target="_blank" class="track">
             <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span
-            >{{ track.name }}</a
+            >{{ track.title }}</a
           >
+        </li>
+      </ul>
+      <ul
+        class="artist-list"
+        @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+        @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+      >
+        <li v-for="track in tracks" :key="track.name" class="list-item">
+          <!-- <span class="border"></span> -->
+          <a
+            :href="track.artist.url"
+            target="_blank"
+            class="artist"
+            :class="{ 'link-enabled': track.artist.url != null }"
+          >
+            {{ track.artist.name }}</a
+          >
+          <template v-if="track.artist2 != null">
+            <span> feat. </span>
+            <a
+              :href="track.artist2.url"
+              target="_blank"
+              class="artist"
+              :class="{ 'link-enabled': track.artist2.url != null }"
+            >
+              {{ track.artist2.name }}</a
+            >
+          </template>
         </li>
       </ul>
     </div>
@@ -26,43 +58,99 @@ export default {
     return {
       tracks: [
         {
-          name: 'effe - panta rhei',
+          artist: {
+            name: 'effe',
+            url: 'https://twitter.com/effel_tou',
+          },
+          artist2: null,
+          title: 'panta rhei',
           url: '',
         },
         {
-          name: 'Hiroto Kudo (WIP)',
+          artist: {
+            name: 'Hiroto Kudo',
+            url: 'https://twitter.com/qudo_',
+          },
+          artist2: null,
+          title: 'WIP',
           url: '',
         },
         {
-          name: 'callasoiled feat. smany - roar',
+          artist: {
+            name: 'callasoiled',
+            url: 'https://twitter.com/callasoiled',
+          },
+          artist2: {
+            name: 'Smany',
+            url: 'https://twitter.com/smany000',
+          },
+          title: 'roar',
           url: '',
         },
         {
-          name: 'BUNGALANGIT - 神様が見てる',
+          artist: {
+            name: 'BUNGALANGIT',
+            url: null,
+          },
+          artist2: null,
+          title: '神様が見てる',
           url: '',
         },
         {
-          name: 'Virtual Cat - Reminiscence',
+          artist: {
+            name: 'Virtual Cat',
+            url: 'https://twitter.com/neko_vtuber',
+          },
+          artist2: null,
+          title: 'Reminiscence',
           url: '',
         },
         {
-          name: 'zohryu - butterfly effect',
+          artist: {
+            name: 'zohryu',
+            url: 'https://twitter.com/zohryu',
+          },
+          artist2: null,
+          title: 'butterfly effect',
           url: '',
         },
         {
-          name: 'N - microcosm (WIP)',
+          artist: {
+            name: 'N',
+            url: null,
+          },
+          artist2: null,
+          title: 'microcosm (WIP)',
           url: '',
         },
         {
-          name: 'callasoiled feat. zohryu - state of mind',
+          artist: {
+            name: 'callasoiled',
+            url: 'https://twitter.com/callasoiled',
+          },
+          artist2: {
+            name: 'zohryu',
+            url: 'https://twitter.com/zohryu',
+          },
+          title: 'state of mind',
           url: '',
         },
         {
-          name: 'ido ito - butterfly effect remix (WIP)',
+          artist: {
+            name: 'ido ito',
+            url: 'https://twitter.com/ido_ito',
+          },
+          artist2: null,
+          title: 'butterfly effect remix (WIP)',
           url: '',
         },
         {
-          name: 'seiji takahashi - butterfly effect remix for zohyru',
+          artist: {
+            name: 'Seiji Takahashi',
+            url: 'https://twitter.com/N41_E141',
+          },
+          artist2: null,
+          title: 'butterfly effect remix for zohyru',
           url: '',
         },
       ],
@@ -136,6 +224,14 @@ export default {
 .track-list {
   list-style: none;
 
+  .border {
+    flex: 1;
+    height: 1px;
+    // width: 30px;
+    background-color: $color-black;
+    margin: auto 0;
+  }
+
   .track {
     font-size: 18px;
     @include font-acumin();
@@ -154,6 +250,63 @@ export default {
     }
     .index {
       padding-right: 0.8em;
+    }
+    .artist {
+      position: relative;
+      margin-left: 30px;
+    }
+  }
+}
+
+.artist-list {
+  list-style: none;
+  font-size: 18px;
+  @include font-acumin();
+  letter-spacing: 0.05em;
+  line-height: 48px;
+  color: $color-black;
+  padding-left: 30px;
+  @include mq() {
+    padding-left: 10px;
+    font-size: 12px;
+    line-height: 32px;
+  }
+  .border {
+    flex: 1;
+    height: 1px;
+    // width: 30px;
+    background-color: $color-black;
+    margin: auto 0;
+  }
+
+  .artist {
+    position: relative;
+    text-decoration: none;
+    color: $color-black;
+    transition: color 0.2s ease;
+    @include mq() {
+      font-size: 12px;
+      line-height: 32px;
+    }
+
+    .index {
+      padding-right: 0.8em;
+    }
+  }
+  .link-enabled {
+    cursor: pointer;
+    &:after {
+      position: absolute;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      content: '';
+      background: $color-black;
+    }
+    &:hover {
+      transition: color 0.2s ease;
+      color: $color-blue;
     }
   }
 }
