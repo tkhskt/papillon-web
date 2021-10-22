@@ -13,9 +13,9 @@
               @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
               @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
             >
+              <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span>
               <a :href="track.url" target="_blank" class="track">
-                <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span
-                >{{ track.title }}</a
+                {{ track.title }}</a
               >
             </td>
             <td
@@ -224,11 +224,25 @@ export default {
 
 .table {
   width: 100%;
+  max-width: 550px;
 }
 
 .track-list {
   list-style: none;
-
+  .index {
+    font-size: 18px;
+    @include font-acumin();
+    letter-spacing: 0.05em;
+    line-height: 48px;
+    color: $color-black;
+    text-decoration: none;
+    @include mq() {
+      font-size: 12px;
+      line-height: 24px;
+      padding: 4px 0;
+    }
+    padding-right: 0.8em;
+  }
   .track {
     font-size: 18px;
     @include font-acumin();
@@ -245,10 +259,11 @@ export default {
     &:hover {
       transition: color 0.2s ease;
       color: $color-blue;
+      @include mq() {
+        display: none;
+      }
     }
-    .index {
-      padding-right: 0.8em;
-    }
+
     .artist {
       position: relative;
       margin-left: 30px;
@@ -295,6 +310,9 @@ export default {
     &:hover {
       transition: color 0.2s ease;
       color: $color-blue;
+      @include mq() {
+        display: none;
+      }
     }
   }
 }

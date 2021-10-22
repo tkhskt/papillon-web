@@ -93,6 +93,7 @@
   line-height: 48px;
   color: $color-white;
   @include mq() {
+    width: 100%;
     font-size: 12px;
     line-height: 32px;
   }
@@ -104,6 +105,9 @@
       &:hover {
         color: $color-blue;
         transition: color 0.2s ease;
+        @include mq() {
+          display: none;
+        }
       }
     }
   }
