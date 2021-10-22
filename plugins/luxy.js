@@ -3,16 +3,16 @@ import luxy from 'luxy.js'
 
 export default function ({ app }, inject) {
   const initLuxy = (d) => {
-    const isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints
-    const speed = isTouchDevice ? 1 : 0.08
+    const Touch = 'ontouchstart' in window || navigator.msMaxTouchPoints
 
-    Vue.component(
-      'Luxy',
-      luxy.init({
-        wrapper: '#main-content',
-        wrapperSpeed: speed,
-      })
-    )
+    if (typeof Touch === 'undefined') {
+      Vue.component(
+        'Luxy',
+        luxy.init({
+          wrapper: '#main-content',
+        })
+      )
+    }
   }
 
   inject('initLuxy', initLuxy)

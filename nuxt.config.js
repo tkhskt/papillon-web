@@ -21,18 +21,22 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'ABY | TOTAL BODY SALON',
+        content: 'Papillon',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content: 'Music compilation album',
       },
-      { hid: 'og:url', property: 'og:url', content: '' },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://papillon.blue/',
+      },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: '',
+        content: 'https://papillon.blue/ogp.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

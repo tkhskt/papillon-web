@@ -119,6 +119,7 @@ export default {
   },
   mounted() {
     const store = this.$store
+    const component = this
     this.$adobeFonts(document, this.$store)
     this.$initLuxy()
     window.addEventListener('mousemove', this.mouseMove)
@@ -127,6 +128,12 @@ export default {
         width: window.innerWidth,
         height: window.innerHeight,
       })
+    })
+    window.addEventListener('scroll', () => {
+      if (component.isTouchable()) {
+        component.scrollY = window.scrollY
+        component.handleMobileScroll()
+      }
     })
     store.dispatch('main/onResize', {
       width: window.innerWidth,
@@ -141,9 +148,7 @@ export default {
           const matrixArr = a.split(', ')
           const translateY = parseInt(matrixArr[5])
           this.scrollY = -translateY
-          if (this.isMobile) {
-            this.handleMobileScroll()
-          } else {
+          if (!this.isTouchable()) {
             this.handleScroll()
           }
         }
@@ -157,6 +162,10 @@ export default {
     })
   },
   methods: {
+    isTouchable() {
+      const Touch = 'ontouchstart' in window || navigator.msMaxTouchPoints
+      return typeof Touch !== 'undefined'
+    },
     handleScroll() {
       const imageOffset = window.innerHeight * 0
       const minHeight = 700

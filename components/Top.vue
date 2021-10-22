@@ -121,9 +121,9 @@ export default {
       width: 77px;
       height: 77px;
       font-size: 12px;
-      color: white;
+      color: $color-white;
       text-align: center;
-      border: solid 1px white;
+      border: solid 1px $color-white;
       border-radius: 38.5px;
       @include mq() {
         position: absolute;
