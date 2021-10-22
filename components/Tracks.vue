@@ -229,11 +229,11 @@ export default {
 .track-list {
   list-style: none;
 
-  @include mq() {
-    width: 100%;
-    display: block;
-    margin-top: 15px;
-  }
+  // @include mq() {
+  //   width: 100%;
+  //   display: block;
+  //   margin-top: 15px;
+  // }
   .border {
     flex: 1;
     height: 1px;
@@ -282,9 +282,9 @@ export default {
     font-size: 12px;
     line-height: 24px;
     padding: 0;
-    width: 100%;
-    display: block;
-    text-align: right;
+    // width: 100%;
+    // display: block;
+    // text-align: right;
   }
   // &:before {
   //   position: absolute;
