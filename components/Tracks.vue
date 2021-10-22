@@ -229,19 +229,6 @@ export default {
 .track-list {
   list-style: none;
 
-  // @include mq() {
-  //   width: 100%;
-  //   display: block;
-  //   margin-top: 15px;
-  // }
-  .border {
-    flex: 1;
-    height: 1px;
-    // width: 30px;
-    background-color: $color-black;
-    margin: auto 0;
-  }
-
   .track {
     font-size: 18px;
     @include font-acumin();
@@ -253,7 +240,7 @@ export default {
     @include mq() {
       font-size: 12px;
       line-height: 24px;
-      padding: 0;
+      padding: 4px 0;
     }
     &:hover {
       transition: color 0.2s ease;
@@ -281,32 +268,7 @@ export default {
   @include mq() {
     font-size: 12px;
     line-height: 24px;
-    padding: 0;
-    // width: 100%;
-    // display: block;
-    // text-align: right;
-  }
-  // &:before {
-  //   position: absolute;
-  //   display: none;
-  //   @include mq() {
-  //     display: inline-block;
-  //     content: '';
-  //     height: 1px;
-  //     width: 30px;
-  //     background: $color-black;
-  //     left: -40px;
-  //     top: 0;
-  //     bottom: 0;
-  //     margin: auto;
-  //   }
-  // }
-  .border {
-    flex: 1;
-    height: 1px;
-    // width: 30px;
-    background-color: $color-black;
-    margin: auto 0;
+    padding: 4px 0;
   }
 
   .artist {
