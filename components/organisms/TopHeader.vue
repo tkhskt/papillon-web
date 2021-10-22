@@ -82,6 +82,9 @@ export default {
     @include font-hightower();
     cursor: default;
     user-select: none;
+    @include mq(md) {
+      font-size: 144px;
+    }
     @include mq() {
       font-size: 48px;
     }

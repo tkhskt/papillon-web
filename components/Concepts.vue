@@ -124,6 +124,9 @@ export default {
   @include font-hightower();
   font-size: 120px;
   color: $color-white;
+  @include mq(md) {
+    font-size: 96px;
+  }
   @include mq() {
     font-size: 36px;
   }
@@ -131,7 +134,8 @@ export default {
 
 .concepts-content {
   color: $color-white;
-  padding: 0 11.4vw;
+  padding: 0 100px;
+  max-width: 900px;
   @include mq() {
     padding: 0;
     margin-top: 77px;

@@ -162,6 +162,9 @@ export default {
   @include font-hightower();
   font-size: 120px;
   color: $color-black;
+  @include mq(md) {
+    font-size: 96px;
+  }
   @include mq() {
     font-size: 36px;
   }

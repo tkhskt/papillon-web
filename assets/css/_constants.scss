@@ -22,11 +22,11 @@ $min-height-section: 700px;
 }
 
 $breakpoints: (
-  'sm': 'screen and (max-width: 399px)',
-  'md': 'screen and (max-width: 1024px)',
+  'sm': 'screen and (max-width: 1024px)',
+  'md': 'screen and (max-width: 1199px)',
 );
 
-@mixin mq($breakpoint: md) {
+@mixin mq($breakpoint: sm) {
   @media #{map-get($breakpoints, $breakpoint)} {
     @content;
   }

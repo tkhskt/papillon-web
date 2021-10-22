@@ -113,6 +113,9 @@
   @include font-hightower();
   font-size: 120px;
   color: $color-white;
+  @include mq(md) {
+    font-size: 96px;
+  }
   @include mq() {
     font-size: 36px;
   }
