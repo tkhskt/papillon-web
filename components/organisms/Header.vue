@@ -16,7 +16,7 @@
     >
       <a class="link" :class="color">Spotify</a>
       <a class="link" :class="color">Bandcamp</a>
-      <a class="link" :class="color">Youtube</a>
+      <a class="link" :class="color">YouTube</a>
     </div>
   </div>
 </template>
