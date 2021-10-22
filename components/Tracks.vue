@@ -1,7 +1,7 @@
 <template>
   <div class="tracks-container">
     <div class="left">
-      <table>
+      <table class="table" cell-spacing="15">
         <tbody>
           <tr
             v-for="(track, index) in tracks"
@@ -222,9 +222,18 @@ export default {
   }
 }
 
+.table {
+  width: 100%;
+}
+
 .track-list {
   list-style: none;
 
+  @include mq() {
+    width: 100%;
+    display: block;
+    margin-top: 15px;
+  }
   .border {
     flex: 1;
     height: 1px;
@@ -244,7 +253,7 @@ export default {
     @include mq() {
       font-size: 12px;
       line-height: 24px;
-      padding: 4px 0;
+      padding: 0;
     }
     &:hover {
       transition: color 0.2s ease;
@@ -261,6 +270,7 @@ export default {
 }
 
 .artist-list {
+  position: relative;
   list-style: none;
   font-size: 18px;
   @include font-acumin();
@@ -271,8 +281,26 @@ export default {
   @include mq() {
     font-size: 12px;
     line-height: 24px;
-    padding: 4px 0 4px 12px;
+    padding: 0;
+    width: 100%;
+    display: block;
+    text-align: right;
   }
+  // &:before {
+  //   position: absolute;
+  //   display: none;
+  //   @include mq() {
+  //     display: inline-block;
+  //     content: '';
+  //     height: 1px;
+  //     width: 30px;
+  //     background: $color-black;
+  //     left: -40px;
+  //     top: 0;
+  //     bottom: 0;
+  //     margin: auto;
+  //   }
+  // }
   .border {
     flex: 1;
     height: 1px;
