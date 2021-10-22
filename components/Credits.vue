@@ -53,7 +53,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 0 25px;
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
   }
   .left {

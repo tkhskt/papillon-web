@@ -82,6 +82,9 @@ export default {
     opacity: 0;
     transition: opacity 0.5s ease;
     user-select: none;
+    @include mq() {
+      font-size: 18px;
+    }
     &.displayed {
       opacity: 1;
     }
