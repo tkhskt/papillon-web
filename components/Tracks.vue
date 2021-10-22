@@ -1,50 +1,51 @@
 <template>
   <div class="tracks-container">
     <div class="left">
-      <ul
-        class="track-list"
-        @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
-        @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
-      >
-        <li
-          v-for="(track, index) in tracks"
-          :key="track.name"
-          class="list-item"
-        >
-          <a :href="track.url" target="_blank" class="track">
-            <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span
-            >{{ track.title }}</a
+      <table>
+        <tbody>
+          <tr
+            v-for="(track, index) in tracks"
+            :key="track.name"
+            class="list-item"
           >
-        </li>
-      </ul>
-      <ul
-        class="artist-list"
-        @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
-        @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
-      >
-        <li v-for="track in tracks" :key="track.name" class="list-item">
-          <!-- <span class="border"></span> -->
-          <a
-            :href="track.artist.url"
-            target="_blank"
-            class="artist"
-            :class="{ 'link-enabled': track.artist.url != null }"
-          >
-            {{ track.artist.name }}</a
-          >
-          <template v-if="track.artist2 != null">
-            <span> feat. </span>
-            <a
-              :href="track.artist2.url"
-              target="_blank"
-              class="artist"
-              :class="{ 'link-enabled': track.artist2.url != null }"
+            <td
+              class="track-list"
+              @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
+              @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
             >
-              {{ track.artist2.name }}</a
+              <a :href="track.url" target="_blank" class="track">
+                <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span
+                >{{ track.title }}</a
+              >
+            </td>
+            <td
+              class="artist-list"
+              @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+              @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
             >
-          </template>
-        </li>
-      </ul>
+              <a
+                :href="track.artist.url"
+                target="_blank"
+                class="artist"
+                :class="{ 'link-enabled': track.artist.url != null }"
+              >
+                {{ track.artist.name }}</a
+              >
+              <template v-if="track.artist2 != null">
+                <span> feat. </span>
+                <a
+                  :href="track.artist2.url"
+                  target="_blank"
+                  class="artist"
+                  :class="{ 'link-enabled': track.artist2.url != null }"
+                >
+                  {{ track.artist2.name }}</a
+                >
+              </template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="right">
       <h2 class="section-title">Tracks</h2>
@@ -189,7 +190,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     padding: 0 25px;
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
   }
   .left {
@@ -242,7 +243,8 @@ export default {
     transition: color 0.2s ease;
     @include mq() {
       font-size: 12px;
-      line-height: 32px;
+      line-height: 24px;
+      padding: 4px 0;
     }
     &:hover {
       transition: color 0.2s ease;
@@ -267,9 +269,9 @@ export default {
   color: $color-black;
   padding-left: 30px;
   @include mq() {
-    padding-left: 10px;
     font-size: 12px;
-    line-height: 32px;
+    line-height: 24px;
+    padding: 4px 0 4px 12px;
   }
   .border {
     flex: 1;
@@ -284,10 +286,6 @@ export default {
     text-decoration: none;
     color: $color-black;
     transition: color 0.2s ease;
-    @include mq() {
-      font-size: 12px;
-      line-height: 32px;
-    }
 
     .index {
       padding-right: 0.8em;
