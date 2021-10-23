@@ -225,19 +225,18 @@ export default {
     line-height: 48px;
     color: $color-black;
     text-decoration: none;
-    width: 40px;
+    width: 2em;
     @include mq(md) {
       font-size: 16px;
       line-height: 38px;
-      width: 36px;
+      width: 2em;
     }
     @include mq() {
       font-size: 12px;
       line-height: 24px;
       padding: 4px 0;
-      width: 20px;
+      width: 1.8em;
     }
-    padding-right: 0.8em;
   }
   .track {
     font-size: 18px;
