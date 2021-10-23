@@ -8,6 +8,10 @@
         :color="currentSection"
       />
     </transition>
+    <!-- <transition name="modal">
+      <modal class="modal" v-if="modalOpened" />
+    </transition>
+    <mobile-menu class="mobile-menu" :current-section="currentSection" /> -->
     <div
       id="main-content"
       ref="mainContent"
@@ -28,7 +32,11 @@
         :cursor-y="cursor.y"
       />
       <div class="sections">
-        <span v-if="!isMobile" class="vertical-line"></span>
+        <span
+          v-if="!isMobile"
+          class="vertical-line"
+          :class="currentSection"
+        ></span>
         <tracks ref="tracks" class="tracks" />
         <concepts ref="concepts" class="concepts" />
         <credits ref="credits" class="credits" />
@@ -36,7 +44,7 @@
       <span
         v-if="isMobile"
         class="vertical-line"
-        :class="{ visible: showMobileLine }"
+        :class="[currentSection, { visible: showMobileLine }]"
       ></span>
       <gradient-circle class="circle" />
     </div>
@@ -65,6 +73,7 @@
 import { mapState } from 'vuex'
 import { TweenLite } from 'gsap/dist/gsap'
 import Crossfade from '~/components/atoms/Crossfade.vue'
+// import MobileMenu from '~/components/organisms/MobileMenu.vue'
 
 export default {
   components: { Crossfade },
@@ -90,6 +99,7 @@ export default {
       'xfdStarted',
       'hoverLink',
       'isMobile',
+      'modalOpened',
     ]),
   },
   watch: {
@@ -330,7 +340,23 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: 999999;
+  z-index: $z-splash;
+}
+
+.mobile-menu {
+  position: fixed;
+  z-index: $z-mobile-menu;
+  right: 10px;
+  top: 30px;
+}
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
 }
 
 .cursor {
@@ -349,7 +375,7 @@ export default {
   border-radius: 50% 50%;
   will-change: left top;
   font-size: 20px;
-  z-index: 100000;
+  z-index: $z-cursor;
   mix-blend-mode: difference;
   transition: mix-blend-mode 0.2s;
   @include mq() {
@@ -408,7 +434,7 @@ export default {
   position: fixed;
   top: 49px;
   padding: 0 58px;
-  z-index: 2000;
+  z-index: $z-header;
   width: 100%;
   @include mq() {
     padding: 25px;
@@ -434,11 +460,23 @@ export default {
   height: 100%;
   width: 1px;
   background: $color-white;
-  mix-blend-mode: difference;
   left: 0;
   right: 0;
   margin: auto;
-  z-index: 50;
+  z-index: $z-vertical-line;
+  transition: background-color 0.5s ease;
+  &.top {
+    background-color: $color-black;
+  }
+  &.tracks {
+    background-color: $color-black;
+  }
+  &.concepts {
+    background-color: $color-white;
+  }
+  &.credits {
+    background-color: $color-white;
+  }
   @include mq() {
     top: 0;
     opacity: 0;
@@ -457,7 +495,7 @@ export default {
   right: 0;
   margin: auto;
   bottom: -14.3vw;
-  z-index: 60;
+  z-index: $z-circle;
   @include mq() {
     bottom: -50vmin;
     left: -50vmin;
@@ -470,6 +508,14 @@ export default {
   transition: opacity 0.5s;
 }
 .header-enter, .header-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.2s;
+}
+.modal-enter, .modal-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>

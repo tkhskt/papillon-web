@@ -9,6 +9,13 @@ $color-black: rgba(47, 47, 47, 1);
 $color-purple: rgba(53, 45, 88, 1);
 $min-height-section: 700px;
 
+$z-splash: 999999;
+$z-mobile-menu: 99999999;
+$z-cursor: 40;
+$z-header: 30;
+$z-circle: 20;
+$z-vertical-line: 10;
+
 @mixin font-hightower() {
   font-family: hightower-text, source-han-serif-japanese, serif;
   font-weight: 400;

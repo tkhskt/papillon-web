@@ -23,7 +23,7 @@
           >)
         </li>
         <li class="credit">
-          XFD Video - MikaIsFake (<a
+          XFD video - MikaIsFake (<a
             class="link"
             href="https://twitter.com/fake_mika"
             target="_blank"
@@ -130,7 +130,7 @@
         color: $color-blue;
         transition: color 0.2s ease;
         @include mq() {
-          display: none;
+          color: $color-black;
         }
       }
     }

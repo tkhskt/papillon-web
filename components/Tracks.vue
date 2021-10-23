@@ -8,15 +8,9 @@
             :key="track.name"
             class="list-item"
           >
-            <td
-              class="track-list"
-              @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
-              @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
-            >
+            <td class="track-list">
               <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span>
-              <a :href="track.url" target="_blank" class="track">
-                {{ track.title }}</a
-              >
+              <a target="_blank" class="track"> {{ track.title }}</a>
             </td>
             <td
               class="artist-list"
@@ -54,6 +48,8 @@
 </template>
 
 <script>
+//  @mouseover="$store.dispatch('main/onChangeHoverTrack', true)"
+//           @mouseleave="$store.dispatch('main/onChangeHoverTrack', false)"
 export default {
   data() {
     return {
@@ -249,9 +245,10 @@ export default {
     }
     &:hover {
       transition: color 0.2s ease;
-      color: $color-blue;
+      // color: $color-blue;
+      color: $color-black;
       @include mq() {
-        display: none;
+        color: $color-black;
       }
     }
 
@@ -301,8 +298,9 @@ export default {
     &:hover {
       transition: color 0.2s ease;
       color: $color-blue;
+
       @include mq() {
-        display: none;
+        color: $color-black;
       }
     }
   }

@@ -15,6 +15,7 @@ export const state = () => ({
   videoLoaded: false,
   artworkLoaded: false,
   loadCompleted: false,
+  modalOpened: false,
 })
 
 export const actions = {
@@ -50,6 +51,9 @@ export const actions = {
   },
   onLoadArtworkCompleted({ commit }, load) {
     commit('setArtworkLoaded', load)
+  },
+  onChangeModal({ commit }, opened) {
+    commit('setModalOpened', opened)
   },
 }
 
@@ -93,5 +97,8 @@ export const mutations = {
   },
   setArtworkLoaded(state, value) {
     state.artworkLoaded = value
+  },
+  setModalOpened(state, value) {
+    state.modalOpened = value
   },
 }

@@ -15,7 +15,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Music compilation album',
+        content: 'Enter into the world of the Papillon...',
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
@@ -26,7 +26,7 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: 'Music compilation album',
+        content: 'Enter into the world of the Papillon...',
       },
       {
         hid: 'og:url',

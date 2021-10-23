@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-container">
+  <div v-scroll-lock="modalOpened" class="modal-container">
     <ul class="link-list">
       <li class="link"><a>Spotify</a></li>
       <li class="link"><a>Bandcamp</a></li>
@@ -9,18 +9,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  props: {
-    color: {
-      type: String,
-      default: 'top',
-    },
-  },
-  methods: {
-    clickTitle() {
-      window.scroll({ top: 0 })
-      this.$store.dispatch('main/onChangeHoverLink', false)
-    },
+  computed: {
+    ...mapState('main', ['modalOpened']),
   },
 }
 </script>
@@ -36,6 +28,13 @@ export default {
   .link-list {
     list-style: none;
     .link {
+      text-align: center;
+      &:nth-child(2) {
+        margin-top: 30px;
+      }
+      &:last-child {
+        margin-top: 30px;
+      }
       a {
         font-size: 24px;
         color: $color-white;

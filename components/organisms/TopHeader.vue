@@ -1,7 +1,7 @@
 <template>
   <div class="top-header-container">
     <h1 class="title">Papillon</h1>
-    <div
+    <!-- <div
       class="outer-links"
       @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
       @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
@@ -36,7 +36,7 @@
         @mouseleave="hoverYouTube = false"
         >Youtube</a
       >
-    </div>
+    </div> -->
   </div>
 </template>
 
