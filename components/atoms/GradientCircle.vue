@@ -4,9 +4,9 @@
     @mouseenter="hoverCircle = true"
     @mouseleave="hoverCircle = false"
   >
-    <!-- <p class="announce" :class="{ visible: hoverCircle }">
+    <p class="announce" :class="{ visible: hoverCircle }">
       The limited edition releases later…
-    </p> -->
+    </p>
   </div>
 </template>
 
@@ -22,7 +22,6 @@ export default {
 
 <style scoped lang="scss">
 .circle-container {
-  position: relative;
   width: 28.6vw;
   height: 28.6vw;
   border-radius: 50%;
