@@ -73,7 +73,7 @@ export default {
             url: 'https://twitter.com/qudo_',
           },
           artist2: null,
-          title: 'WIP',
+          title: 'Lazurite',
           url: '',
         },
         {
@@ -121,7 +121,7 @@ export default {
             url: null,
           },
           artist2: null,
-          title: 'microcosm (WIP)',
+          title: 'microcosm',
           url: '',
         },
         {
