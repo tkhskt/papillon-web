@@ -109,13 +109,17 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  max-width: 550px;
+  max-width: 400px;
   list-style: none;
   font-size: 18px;
   @include font-acumin();
   letter-spacing: 0.05em;
   line-height: 48px;
   color: $color-white;
+  @include mq(md) {
+    font-size: 16px;
+    line-height: 38px;
+  }
   @include mq() {
     width: 100%;
     font-size: 12px;

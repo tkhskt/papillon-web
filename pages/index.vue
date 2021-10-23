@@ -459,7 +459,7 @@ export default {
   display: inline-block;
   height: 100%;
   width: 1px;
-  background: $color-white;
+  background-color: $color-white;
   left: 0;
   right: 0;
   margin: auto;

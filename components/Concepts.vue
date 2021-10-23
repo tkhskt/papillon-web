@@ -163,6 +163,9 @@ export default {
       font-size: 18px;
       transition: opacity 0.1s ease;
       cursor: pointer;
+      @include mq(md) {
+        font-size: 16px;
+      }
       @include mq() {
         font-size: 16px;
       }
@@ -171,6 +174,9 @@ export default {
       font-size: 18px;
       transition: opacity 0.1s ease;
       cursor: pointer;
+      @include mq(md) {
+        font-size: 16px;
+      }
       @include mq() {
         font-size: 16px;
       }
@@ -184,6 +190,9 @@ export default {
       @include font-hightower();
       line-height: 26px;
       letter-spacing: 0.05em;
+      @include mq(md) {
+        font-size: 14px;
+      }
       @include mq() {
         font-size: 12px;
         line-height: 18px;
@@ -193,6 +202,9 @@ export default {
       @include font-hightower();
       line-height: 26px;
       letter-spacing: 0.05em;
+      @include mq(md) {
+        font-size: 14px;
+      }
       @include mq() {
         font-size: 12px;
         line-height: 18px;
@@ -207,6 +219,9 @@ export default {
     font-size: 24px;
     @include font-hightower();
     margin-top: 5px;
+    @include mq(md) {
+      font-size: 20px;
+    }
     @include mq() {
       font-size: 18px;
     }

@@ -186,6 +186,7 @@ export default {
     align-items: center;
     width: 50%;
     height: 100%;
+    padding: 0 10px;
     @include mq() {
       width: 100%;
       height: auto;
@@ -217,16 +218,24 @@ export default {
 .track-list {
   list-style: none;
   .index {
+    display: inline-block;
     font-size: 18px;
     @include font-acumin();
     letter-spacing: 0.05em;
     line-height: 48px;
     color: $color-black;
     text-decoration: none;
+    width: 40px;
+    @include mq(md) {
+      font-size: 16px;
+      line-height: 38px;
+      width: 36px;
+    }
     @include mq() {
       font-size: 12px;
       line-height: 24px;
       padding: 4px 0;
+      width: 20px;
     }
     padding-right: 0.8em;
   }
@@ -238,6 +247,10 @@ export default {
     color: $color-black;
     text-decoration: none;
     transition: color 0.2s ease;
+    @include mq(md) {
+      font-size: 16px;
+      line-height: 38px;
+    }
     @include mq() {
       font-size: 12px;
       line-height: 24px;
@@ -268,6 +281,10 @@ export default {
   line-height: 48px;
   color: $color-black;
   padding-left: 30px;
+  @include mq(md) {
+    font-size: 16px;
+    line-height: 38px;
+  }
   @include mq() {
     font-size: 12px;
     line-height: 24px;
