@@ -32,11 +32,7 @@
         :cursor-y="cursor.y"
       />
       <div class="sections">
-        <span
-          v-if="!isMobile"
-          class="vertical-line"
-          :class="currentSection"
-        ></span>
+        <span v-if="!isMobile" class="vertical-line"></span>
         <tracks ref="tracks" class="tracks" />
         <concepts ref="concepts" class="concepts" />
         <credits ref="credits" class="credits" />
@@ -455,7 +451,7 @@ export default {
 }
 
 .vertical-line {
-  position: absolute;
+  position: fixed;
   display: inline-block;
   height: 100%;
   width: 1px;
@@ -466,18 +462,6 @@ export default {
   z-index: $z-vertical-line;
   transition: background-color 0.5s ease;
   mix-blend-mode: difference;
-  // &.top {
-  //   background-color: $color-black;
-  // }
-  // &.tracks {
-  //   background-color: $color-black;
-  // }
-  // &.concepts {
-  //   background-color: $color-white;
-  // }
-  // &.credits {
-  //   background-color: $color-white;
-  // }
   @include mq() {
     top: 0;
     opacity: 0;
