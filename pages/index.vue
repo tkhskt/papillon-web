@@ -465,18 +465,19 @@ export default {
   margin: auto;
   z-index: $z-vertical-line;
   transition: background-color 0.5s ease;
-  &.top {
-    background-color: $color-black;
-  }
-  &.tracks {
-    background-color: $color-black;
-  }
-  &.concepts {
-    background-color: $color-white;
-  }
-  &.credits {
-    background-color: $color-white;
-  }
+  mix-blend-mode: difference;
+  // &.top {
+  //   background-color: $color-black;
+  // }
+  // &.tracks {
+  //   background-color: $color-black;
+  // }
+  // &.concepts {
+  //   background-color: $color-white;
+  // }
+  // &.credits {
+  //   background-color: $color-white;
+  // }
   @include mq() {
     top: 0;
     opacity: 0;
