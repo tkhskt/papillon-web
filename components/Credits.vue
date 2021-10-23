@@ -32,7 +32,26 @@
             >@gericass</a
           >)
         </li>
-        <li class="credit">Special thanks -</li>
+        <li class="credit">
+          XFD Video - MikaIsFake (<a
+            class="link"
+            href="https://twitter.com/fake_mika"
+            target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+            >@fake_mika</a
+          >)
+        </li>
+        <li class="credit">
+          Special thanks - Bitplane (<a
+            class="link"
+            href="https://twitter.com/AnitaSun"
+            target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+            >@AnitaSun</a
+          >)
+        </li>
       </ul>
     </div>
     <div class="right">

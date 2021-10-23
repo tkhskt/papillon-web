@@ -94,7 +94,7 @@ export default {
             url: null,
           },
           artist2: null,
-          title: '神様が見てる',
+          title: '神様が見てる (2021 remaster)',
           url: '',
         },
         {
@@ -117,7 +117,7 @@ export default {
         },
         {
           artist: {
-            name: 'N',
+            name: '9788n',
             url: null,
           },
           artist2: null,
@@ -134,15 +134,6 @@ export default {
             url: 'https://twitter.com/zohryu',
           },
           title: 'state of mind',
-          url: '',
-        },
-        {
-          artist: {
-            name: 'ido ito',
-            url: 'https://twitter.com/ido_ito',
-          },
-          artist2: null,
-          title: 'butterfly effect remix (WIP)',
           url: '',
         },
         {
