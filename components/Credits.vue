@@ -23,16 +23,6 @@
           >)
         </li>
         <li class="credit">
-          Web creation - thorn (<a
-            class="link"
-            href="https://twitter.com/gericass"
-            target="_blank"
-            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
-            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
-            >@gericass</a
-          >)
-        </li>
-        <li class="credit">
           XFD Video - MikaIsFake (<a
             class="link"
             href="https://twitter.com/fake_mika"
@@ -40,6 +30,16 @@
             @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
             @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
             >@fake_mika</a
+          >)
+        </li>
+        <li class="credit">
+          Web creation - thorn (<a
+            class="link"
+            href="https://twitter.com/gericass"
+            target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+            >@gericass</a
           >)
         </li>
         <li class="credit">
@@ -105,6 +105,11 @@
 }
 
 .credit-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 550px;
   list-style: none;
   font-size: 18px;
   @include font-acumin();
