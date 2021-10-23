@@ -39,12 +39,12 @@ export default {
     right: 0;
     margin: auto;
     text-align: center;
-    color: white;
+    color: $color-white;
     @include font-hightower();
     opacity: 0;
     transition: opacity 0.5s ease;
     &.visible {
-      opacity: 0.4;
+      opacity: 0.3;
     }
     @include mq() {
       display: none;
