@@ -30,7 +30,7 @@ $z-vertical-line: 10;
 
 $breakpoints: (
   'sm': 'screen and (max-width: 1024px)',
-  'md': 'screen and (max-width: 1199px)',
+  'md': 'screen and (max-width: 1279px)',
 );
 
 @mixin mq($breakpoint: sm) {
