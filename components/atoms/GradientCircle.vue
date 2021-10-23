@@ -4,9 +4,9 @@
     @mouseenter="hoverCircle = true"
     @mouseleave="hoverCircle = false"
   >
-    <p class="announce" :class="{ visible: hoverCircle }">
+    <!-- <p class="announce" :class="{ visible: hoverCircle }">
       The limited edition releases later…
-    </p>
+    </p> -->
   </div>
 </template>
 
