@@ -23,6 +23,7 @@
         <a
           class="link"
           href="https://zohryu.bandcamp.com/album/papillon"
+          target="_blank"
           :class="{
             'hover-blue': hoverBandcamp && xfdStarted,
             'hover-black': hoverBandcamp && !xfdStarted,
