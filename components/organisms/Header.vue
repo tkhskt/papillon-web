@@ -15,7 +15,13 @@
       @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
     >
       <!-- <a class="link" target="_blank" :class="color">Spotify</a> -->
-      <a class="link" target="_blank" :class="color">Bandcamp</a>
+      <a
+        class="link"
+        href="https://zohryu.bandcamp.com/album/papillon"
+        target="_blank"
+        :class="color"
+        >Bandcamp</a
+      >
       <!-- <a class="link" target="_blank" :class="color">YouTube</a> -->
     </div>
   </div>

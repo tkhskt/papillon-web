@@ -22,6 +22,7 @@
       > -->
         <a
           class="link"
+          href="https://zohryu.bandcamp.com/album/papillon"
           :class="{
             'hover-blue': hoverBandcamp && xfdStarted,
             'hover-black': hoverBandcamp && !xfdStarted,
@@ -109,6 +110,8 @@ export default {
       font-size: 18px;
       cursor: pointer;
       transition: color 0.2s ease;
+      text-decoration: none;
+      color: $color-white;
       &:nth-child(2) {
         margin: 0 60px;
       }
