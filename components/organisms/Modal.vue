@@ -2,12 +2,10 @@
   <div v-scroll-lock="modalOpened" class="modal-container">
     <ul class="link-list">
       <!-- <li class="link"><a>Spotify</a></li> -->
-      <li
-        class="link"
-        href="https://zohryu.bandcamp.com/album/papillon"
-        target="_blank"
-      >
-        <a>Bandcamp</a>
+      <li class="link">
+        <a href="https://zohryu.bandcamp.com/album/papillon" target="_blank"
+          >Bandcamp</a
+        >
       </li>
       <!-- <li class="link"><a>YouTube</a></li> -->
     </ul>
@@ -42,6 +40,7 @@ export default {
         margin-top: 30px;
       }
       a {
+        text-decoration: none;
         font-size: 24px;
         color: $color-white;
         @include font-acumin();
