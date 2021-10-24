@@ -12,6 +12,7 @@
       <img
         v-if="!isMobile"
         class="stroke--top"
+        :class="{ invisible: xfdStarted }"
         src="~assets/img/stroke_top.svg"
       />
       <img
@@ -22,6 +23,7 @@
       <img
         v-if="!isMobile"
         class="stroke--bottom"
+        :class="{ invisible: xfdStarted }"
         src="~assets/img/stroke_bottom.svg"
       />
       <img
@@ -29,7 +31,9 @@
         class="stroke--bottom"
         src="~assets/img/stroke_bottom_mobile.svg"
       />
-      <p class="scroll-nav">scroll to navigate</p>
+      <p class="scroll-nav" :class="{ invisible: xfdStarted }">
+        scroll to navigate
+      </p>
     </div>
     <artwork class="artwork" :scroll-y="scrollY" />
   </div>
@@ -71,6 +75,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.invisible {
+  opacity: 0;
+}
+
 .top-container {
   position: relative;
   height: 100vh;
@@ -125,6 +133,7 @@ export default {
       text-align: center;
       border: solid 1px $color-white;
       border-radius: 38.5px;
+      transition: opacity 0.2s ease;
       @include mq() {
         position: absolute;
         left: auto;
@@ -153,11 +162,13 @@ export default {
     position: absolute;
     top: 0;
     width: 100%;
+    transition: opacity 0.2s ease;
   }
   &--bottom {
     position: absolute;
     bottom: 0;
     width: 100%;
+    transition: opacity 0.2s ease;
   }
 }
 </style>

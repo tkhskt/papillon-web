@@ -1,6 +1,6 @@
 <template>
   <div class="top-header-container">
-    <h1 class="title">Papillon</h1>
+    <h1 class="title" :class="{ invisible: xfdStarted }">Papillon</h1>
     <!-- <div
       class="outer-links"
       @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
@@ -72,6 +72,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.invisible {
+  opacity: 0;
+}
+
 .top-header-container {
   display: flex;
   justify-content: space-between;
@@ -82,6 +86,7 @@ export default {
     @include font-hightower();
     cursor: default;
     user-select: none;
+    transition: opacity 0.2s ease;
     @include mq(md) {
       font-size: 144px;
     }
