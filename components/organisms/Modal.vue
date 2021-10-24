@@ -7,7 +7,11 @@
           >Bandcamp</a
         >
       </li>
-      <!-- <li class="link"><a>YouTube</a></li> -->
+      <li class="link">
+        <a href="https://www.youtube.com/watch?v=p2kL5TD8rY4" target="_blank"
+          >YouTube</a
+        >
+      </li>
     </ul>
   </div>
 </template>

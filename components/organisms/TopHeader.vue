@@ -32,16 +32,18 @@
           @mouseleave="hoverBandcamp = false"
           >Bandcamp</a
         >
-        <!-- <a
-        class="link"
-        :class="{
-          'hover-blue': hoverYouTube && xfdStarted,
-          'hover-black': hoverYouTube && !xfdStarted,
-        }"
-        @mouseover="hoverYouTube = true"
-        @mouseleave="hoverYouTube = false"
-        >Youtube</a
-      > -->
+        <a
+          class="link"
+          href="https://www.youtube.com/watch?v=p2kL5TD8rY4"
+          target="_blank"
+          :class="{
+            'hover-blue': hoverYouTube && xfdStarted,
+            'hover-black': hoverYouTube && !xfdStarted,
+          }"
+          @mouseover="hoverYouTube = true"
+          @mouseleave="hoverYouTube = false"
+          >YouTube</a
+        >
       </div>
     </transition>
   </div>

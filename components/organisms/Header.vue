@@ -22,7 +22,13 @@
         :class="color"
         >Bandcamp</a
       >
-      <!-- <a class="link" target="_blank" :class="color">YouTube</a> -->
+      <a
+        class="link"
+        href="https://www.youtube.com/watch?v=p2kL5TD8rY4"
+        target="_blank"
+        :class="color"
+        >YouTube</a
+      >
     </div>
   </div>
 </template>
