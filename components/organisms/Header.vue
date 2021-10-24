@@ -65,6 +65,7 @@ export default {
       transition: color 0.5s ease;
       font-size: 14px;
       cursor: pointer;
+      @include font-acumin();
       &:nth-child(2) {
         margin: 0 60px;
       }
