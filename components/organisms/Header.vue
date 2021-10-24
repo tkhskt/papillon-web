@@ -14,9 +14,9 @@
       @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
       @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
     >
-      <!-- <a class="link" :class="color">Spotify</a> -->
-      <a class="link" :class="color">Bandcamp</a>
-      <!-- <a class="link" :class="color">YouTube</a> -->
+      <!-- <a class="link" target="_blank" :class="color">Spotify</a> -->
+      <a class="link" target="_blank" :class="color">Bandcamp</a>
+      <!-- <a class="link" target="_blank" :class="color">YouTube</a> -->
     </div>
   </div>
 </template>

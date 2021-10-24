@@ -9,7 +9,7 @@
       />
     </transition>
     <transition name="modal">
-      <moda v-if="modalOpened" class="modal" />
+      <modal v-if="modalOpened" class="modal" />
     </transition>
     <mobile-menu
       v-if="isMobile"
@@ -345,7 +345,7 @@ export default {
 .mobile-menu {
   position: fixed;
   z-index: $z-mobile-menu;
-  right: 10px;
+  right: 20px;
   top: 30px;
 }
 
