@@ -193,6 +193,7 @@ export default {
       order: 2;
       justify-content: flex-start;
       margin-top: 50px;
+      padding: 0;
     }
   }
   .right {

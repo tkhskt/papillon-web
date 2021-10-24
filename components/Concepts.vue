@@ -163,10 +163,7 @@ export default {
       transition: opacity 0.1s ease;
       cursor: pointer;
       @include mq(md) {
-        font-size: 16px;
-      }
-      @include mq() {
-        font-size: 16px;
+        font-size: 18px;
       }
     }
     &__ja {
@@ -174,10 +171,7 @@ export default {
       transition: opacity 0.1s ease;
       cursor: pointer;
       @include mq(md) {
-        font-size: 16px;
-      }
-      @include mq() {
-        font-size: 16px;
+        font-size: 18px;
       }
     }
     .unselected {
@@ -191,10 +185,7 @@ export default {
       letter-spacing: 0.05em;
       @include mq(md) {
         font-size: 14px;
-      }
-      @include mq() {
-        font-size: 12px;
-        line-height: 18px;
+        line-height: 22px;
       }
     }
     &--ja {
@@ -203,10 +194,7 @@ export default {
       letter-spacing: 0.05em;
       @include mq(md) {
         font-size: 14px;
-      }
-      @include mq() {
-        font-size: 12px;
-        line-height: 18px;
+        line-height: 22px;
       }
     }
   }
