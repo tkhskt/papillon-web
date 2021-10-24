@@ -1,12 +1,12 @@
 <template>
   <div class="top-header-container">
     <h1 class="title" :class="{ invisible: xfdStarted }">Papillon</h1>
-    <!-- <div
+    <div
       class="outer-links"
       @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
       @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
     >
-      <a
+      <!-- <a
         class="link"
         :class="{
           'hover-blue': hoverSpotify && xfdStarted,
@@ -15,7 +15,7 @@
         @mouseover="hoverSpotify = true"
         @mouseleave="hoverSpotify = false"
         >Spotify</a
-      >
+      > -->
       <a
         class="link"
         :class="{
@@ -26,7 +26,7 @@
         @mouseleave="hoverBandcamp = false"
         >Bandcamp</a
       >
-      <a
+      <!-- <a
         class="link"
         :class="{
           'hover-blue': hoverYouTube && xfdStarted,
@@ -35,8 +35,8 @@
         @mouseover="hoverYouTube = true"
         @mouseleave="hoverYouTube = false"
         >Youtube</a
-      >
-    </div> -->
+      > -->
+    </div>
   </div>
 </template>
 

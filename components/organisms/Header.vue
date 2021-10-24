@@ -9,15 +9,15 @@
     >
       Papillon
     </h1>
-    <!-- <div
+    <div
       class="outer-links"
       @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
       @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
     >
-      <a class="link" :class="color">Spotify</a>
+      <!-- <a class="link" :class="color">Spotify</a> -->
       <a class="link" :class="color">Bandcamp</a>
-      <a class="link" :class="color">YouTube</a>
-    </div> -->
+      <!-- <a class="link" :class="color">YouTube</a> -->
+    </div>
   </div>
 </template>
 

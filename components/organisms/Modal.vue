@@ -1,9 +1,9 @@
 <template>
   <div v-scroll-lock="modalOpened" class="modal-container">
     <ul class="link-list">
-      <li class="link"><a>Spotify</a></li>
+      <!-- <li class="link"><a>Spotify</a></li> -->
       <li class="link"><a>Bandcamp</a></li>
-      <li class="link"><a>YouTube</a></li>
+      <!-- <li class="link"><a>YouTube</a></li> -->
     </ul>
   </div>
 </template>

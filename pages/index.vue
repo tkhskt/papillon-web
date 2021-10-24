@@ -8,10 +8,14 @@
         :color="currentSection"
       />
     </transition>
-    <!-- <transition name="modal">
-      <modal class="modal" v-if="modalOpened" />
+    <transition name="modal">
+      <moda v-if="modalOpened" class="modal" />
     </transition>
-    <mobile-menu class="mobile-menu" :current-section="currentSection" /> -->
+    <mobile-menu
+      v-if="isMobile"
+      class="mobile-menu"
+      :current-section="currentSection"
+    />
     <div
       id="main-content"
       ref="mainContent"
@@ -69,7 +73,6 @@
 import { mapState } from 'vuex'
 import { TweenLite } from 'gsap/dist/gsap'
 import Crossfade from '~/components/atoms/Crossfade.vue'
-// import MobileMenu from '~/components/organisms/MobileMenu.vue'
 
 export default {
   components: { Crossfade },
