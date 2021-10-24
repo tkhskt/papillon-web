@@ -140,7 +140,7 @@ export default {
             url: 'https://twitter.com/N41_E141',
           },
           artist2: null,
-          title: 'butterfly effect remix for zohyru',
+          title: 'butterfly effect remix for zohryu',
           url: '',
         },
       ],
