@@ -1,12 +1,16 @@
 <template>
   <div class="top-header-container">
-    <h1 class="title" :class="{ invisible: xfdStarted }">Papillon</h1>
-    <div
-      class="outer-links"
-      @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
-      @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
-    >
-      <!-- <a
+    <transition name="header">
+      <h1 v-if="!xfdStarted" class="title">Papillon</h1>
+    </transition>
+    <transition name="header">
+      <div
+        v-if="!xfdStarted"
+        class="outer-links"
+        @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
+        @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
+      >
+        <!-- <a
         class="link"
         :class="{
           'hover-blue': hoverSpotify && xfdStarted,
@@ -16,17 +20,17 @@
         @mouseleave="hoverSpotify = false"
         >Spotify</a
       > -->
-      <a
-        class="link"
-        :class="{
-          'hover-blue': hoverBandcamp && xfdStarted,
-          'hover-black': hoverBandcamp && !xfdStarted,
-        }"
-        @mouseover="hoverBandcamp = true"
-        @mouseleave="hoverBandcamp = false"
-        >Bandcamp</a
-      >
-      <!-- <a
+        <a
+          class="link"
+          :class="{
+            'hover-blue': hoverBandcamp && xfdStarted,
+            'hover-black': hoverBandcamp && !xfdStarted,
+          }"
+          @mouseover="hoverBandcamp = true"
+          @mouseleave="hoverBandcamp = false"
+          >Bandcamp</a
+        >
+        <!-- <a
         class="link"
         :class="{
           'hover-blue': hoverYouTube && xfdStarted,
@@ -36,7 +40,8 @@
         @mouseleave="hoverYouTube = false"
         >Youtube</a
       > -->
-    </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -117,5 +122,13 @@ export default {
       }
     }
   }
+}
+
+.header-enter-active,
+.header-leave-active {
+  transition: opacity 0.2s;
+}
+.header-enter, .header-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
