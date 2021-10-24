@@ -28,7 +28,6 @@ export default {
 
 <style scoped lang="scss">
 .menu-container {
-  position: relative;
   width: 24px;
   height: 13px;
   span {
