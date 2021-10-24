@@ -102,7 +102,6 @@ export default {
       height: auto;
       order: 1;
       justify-content: flex-start;
-      margin-top: 77px;
     }
   }
   .right {
@@ -138,7 +137,7 @@ export default {
   max-width: 900px;
   @include mq() {
     padding: 0;
-    margin-top: 77px;
+    margin-top: 60px;
   }
   .language-wrapper {
     display: flex;

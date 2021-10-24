@@ -192,7 +192,7 @@ export default {
       height: auto;
       order: 2;
       justify-content: flex-start;
-      margin-top: 77px;
+      margin-top: 50px;
     }
   }
   .right {
@@ -217,6 +217,12 @@ export default {
 
 .track-list {
   list-style: none;
+  @include mq() {
+    display: block;
+    width: 100%;
+    padding-top: 10px;
+  }
+
   .index {
     display: inline-block;
     font-size: 18px;
@@ -232,7 +238,7 @@ export default {
       width: 2em;
     }
     @include mq() {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 24px;
       padding: 4px 0;
       width: 1.8em;
@@ -251,7 +257,7 @@ export default {
       line-height: 38px;
     }
     @include mq() {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 24px;
       padding: 4px 0;
     }
@@ -286,8 +292,11 @@ export default {
   }
   @include mq() {
     font-size: 12px;
-    line-height: 24px;
-    padding: 4px 0;
+    line-height: 13px;
+    padding: 0;
+    width: 100%;
+    display: block;
+    text-align: right;
   }
 
   .artist {
@@ -295,7 +304,6 @@ export default {
     text-decoration: none;
     color: $color-black;
     transition: color 0.2s ease;
-
     .index {
       padding-right: 0.8em;
     }
@@ -310,6 +318,9 @@ export default {
       left: 0;
       content: '';
       background: $color-black;
+      @include mq() {
+        bottom: -1px;
+      }
     }
     &:hover {
       transition: color 0.2s ease;

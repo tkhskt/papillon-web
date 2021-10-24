@@ -86,7 +86,7 @@
       height: auto;
       order: 2;
       justify-content: flex-start;
-      margin-top: 77px;
+      margin-top: 60px;
     }
   }
   .right {
@@ -122,7 +122,7 @@
   }
   @include mq() {
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 32px;
   }
   .credit {
