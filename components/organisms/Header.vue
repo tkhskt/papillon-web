@@ -73,7 +73,8 @@ export default {
       cursor: pointer;
       @include font-acumin();
       &:nth-child(2) {
-        margin: 0 60px;
+        // margin: 0 60px;
+        margin-left: 60px;
       }
       text-decoration: none;
       transition: color 0.2s ease;

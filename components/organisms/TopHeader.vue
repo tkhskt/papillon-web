@@ -116,7 +116,8 @@ export default {
       text-decoration: none;
       color: $color-white;
       &:nth-child(2) {
-        margin: 0 60px;
+        // margin: 0 60px;
+        margin-left: 60px;
       }
       &.hover-black {
         transition: color 0.2s ease;
