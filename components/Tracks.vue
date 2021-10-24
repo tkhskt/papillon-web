@@ -11,6 +11,19 @@
             <td class="track-list">
               <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span>
               <a target="_blank" class="track"> {{ track.title }}</a>
+              <template v-if="track.artist2 != null">
+                <span class="feat"> feat. </span>
+                <a
+                  :href="track.artist2.url"
+                  target="_blank"
+                  class="artist"
+                  :class="{ 'link-enabled': track.artist2.url != null }"
+                  @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+                  @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+                >
+                  {{ track.artist2.name }}</a
+                >
+              </template>
             </td>
             <td
               class="artist-list"
@@ -25,17 +38,6 @@
               >
                 {{ track.artist.name }}</a
               >
-              <template v-if="track.artist2 != null">
-                <span> feat. </span>
-                <a
-                  :href="track.artist2.url"
-                  target="_blank"
-                  class="artist"
-                  :class="{ 'link-enabled': track.artist2.url != null }"
-                >
-                  {{ track.artist2.name }}</a
-                >
-              </template>
             </td>
           </tr>
         </tbody>
@@ -270,10 +272,49 @@ export default {
         color: $color-black;
       }
     }
+  }
+  .artist,
+  .feat {
+    position: relative;
+    text-decoration: none;
+    color: $color-black;
+    transition: color 0.2s ease;
+    font-size: 18px;
+    @include font-acumin();
+    letter-spacing: 0.05em;
+    line-height: 48px;
+    color: $color-black;
+    text-decoration: none;
+    @include mq(md) {
+      font-size: 16px;
+      line-height: 38px;
+    }
+    @include mq() {
+      font-size: 14px;
+      line-height: 24px;
+    }
+    &.link-enabled {
+      cursor: pointer;
+      &:after {
+        position: absolute;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        content: '';
+        background: $color-black;
+        @include mq() {
+          bottom: -1px;
+        }
+      }
+      &:hover {
+        transition: color 0.2s ease;
+        color: $color-blue;
 
-    .artist {
-      position: relative;
-      margin-left: 30px;
+        @include mq() {
+          color: $color-black;
+        }
+      }
     }
   }
 }
@@ -305,9 +346,6 @@ export default {
     text-decoration: none;
     color: $color-black;
     transition: color 0.2s ease;
-    .index {
-      padding-right: 0.8em;
-    }
   }
   .link-enabled {
     cursor: pointer;
