@@ -134,7 +134,7 @@
         color: $color-blue;
         transition: color 0.2s ease;
         @include mq() {
-          color: $color-black;
+          color: $color-white;
         }
       }
     }
