@@ -16,6 +16,9 @@ export const state = () => ({
   artworkLoaded: false,
   loadCompleted: false,
   modalOpened: false,
+  containerWidth: 0,
+  scrollOffsetX: 0,
+  translateX: 0,
 })
 
 export const actions = {
@@ -54,6 +57,15 @@ export const actions = {
   },
   onChangeModal({ commit }, opened) {
     commit('setModalOpened', opened)
+  },
+  onResizeContainer({ commit }, size) {
+    commit('setContainerWidth', size)
+  },
+  onHorizontalScroll({ commit }, offset) {
+    commit('setScrollOffsetX', offset)
+  },
+  onTranslate({ commit }, offset) {
+    commit('setTranslateX', offset)
   },
 }
 
@@ -100,5 +112,14 @@ export const mutations = {
   },
   setModalOpened(state, value) {
     state.modalOpened = value
+  },
+  setContainerWidth(state, value) {
+    state.containerWidth = value
+  },
+  setScrollOffsetX(state, value) {
+    state.scrollOffsetX = value
+  },
+  setTranslateX(state, value) {
+    state.translateX = value
   },
 }

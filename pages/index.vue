@@ -1,70 +1,76 @@
 <template>
   <div>
     <splash class="splash" />
-    <transition name="header">
-      <Header
-        v-if="currentSection != 'top'"
-        class="header"
-        :color="currentSection"
-      />
-    </transition>
-    <transition name="modal">
-      <modal v-if="modalOpened" class="modal" />
-    </transition>
-    <mobile-menu
-      v-if="isMobile"
-      class="mobile-menu"
-      :current-section="currentSection"
-    />
-    <div
-      id="main-content"
-      ref="mainContent"
-      class="main-content"
-      :class="currentSection"
-    >
-      <crossfade
-        v-if="!isMobile"
-        class="crossfade"
-        :cursor-x="cursor.x"
-        :cursor-y="cursor.y"
-        :scroll-y="scrollY"
-      />
-      <top
-        class="top"
-        :scroll-y="scrollY"
-        :cursor-x="cursor.x"
-        :cursor-y="cursor.y"
-      />
-      <div class="sections">
-        <span v-if="!isMobile" class="vertical-line"></span>
-        <tracks ref="tracks" class="tracks" />
-        <concepts ref="concepts" class="concepts" />
-        <credits ref="credits" class="credits" />
-      </div>
-      <span
+    <div :style="{ display: isMobile ? 'block' : 'none' }">
+      <transition name="header">
+        <Header
+          v-if="currentSection != 'top'"
+          class="header"
+          :color="currentSection"
+        />
+      </transition>
+      <transition name="modal">
+        <modal v-if="modalOpened" class="modal" />
+      </transition>
+      <mobile-menu
         v-if="isMobile"
-        class="vertical-line"
-        :class="[currentSection, { visible: showMobileLine }]"
-      ></span>
-      <gradient-circle class="circle" />
-    </div>
-    <div ref="cursor" class="cursor" :class="{ bandcamp: hoverTrack }">
-      <span
-        ref="xfd"
-        class="xfd-guide"
-        :class="{
-          invisible: !hoverTop || hoverArtwork || hoverTopLink,
-        }"
-        >{{ xfdGuideText }}</span
-      >
-      <img
-        ref="bandcamp"
-        class="bandcamp"
-        src="~assets/img/bandcamp_logo.png"
-        :class="{
-          invisible: !hoverTrack,
-        }"
+        class="mobile-menu"
+        :current-section="currentSection"
       />
+      <div
+        id="main-content"
+        ref="mainContent"
+        class="main-content"
+        :class="currentSection"
+      >
+        <crossfade
+          v-if="!isMobile"
+          class="crossfade"
+          :cursor-x="cursor.x"
+          :cursor-y="cursor.y"
+          :scroll-y="scrollY"
+        />
+        <top
+          class="top"
+          :scroll-y="scrollY"
+          :cursor-x="cursor.x"
+          :cursor-y="cursor.y"
+        />
+        <div class="sections">
+          <span v-if="!isMobile" class="vertical-line"></span>
+          <tracks ref="tracks" class="tracks" />
+          <concepts ref="concepts" class="concepts" />
+          <credits ref="credits" class="credits" />
+        </div>
+        <span
+          v-if="isMobile"
+          class="vertical-line"
+          :class="[currentSection, { visible: showMobileLine }]"
+        ></span>
+        <gradient-circle class="circle" />
+      </div>
+      <div ref="cursor" class="cursor" :class="{ bandcamp: hoverTrack }">
+        <span
+          ref="xfd"
+          class="xfd-guide"
+          :class="{
+            invisible: !hoverTop || hoverArtwork || hoverTopLink,
+          }"
+          >{{ xfdGuideText }}</span
+        >
+        <img
+          ref="bandcamp"
+          class="bandcamp"
+          src="~assets/img/bandcamp_logo.png"
+          :class="{
+            invisible: !hoverTrack,
+          }"
+        />
+      </div>
+    </div>
+    <div :style="{ display: isMobile ? 'none' : 'block' }">
+      <special-root />
+      <div ref="cursor" class="cursor" :class="{ bandcamp: hoverTrack }"></div>
     </div>
   </div>
 </template>

@@ -16,8 +16,6 @@ $z-header: 30;
 $z-circle: 20;
 $z-vertical-line: 10;
 
-$width-special-sidebar: 80px;
-
 @mixin font-hightower() {
   font-family: hightower-text, source-han-serif-japanese, serif;
   font-weight: 400;
@@ -27,12 +25,6 @@ $width-special-sidebar: 80px;
 @mixin font-acumin() {
   font-family: acumin-pro, noto-sans-cjk-jp, sans-serif;
   font-weight: 300;
-  font-style: normal;
-}
-
-@mixin font-acumin-bold() {
-  font-family: acumin-pro, sans-serif;
-  font-weight: 700;
   font-style: normal;
 }
 

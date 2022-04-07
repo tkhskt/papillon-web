@@ -20,10 +20,6 @@ body {
   overscroll-behavior-y: none;
 }
 
-::-webkit-scrollbar {
-  height: 0 !important;
-}
-
 a {
   letter-spacing: 0.05em;
 }
