@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   props: {
     scrollY: {
@@ -39,9 +38,6 @@ export default {
       artworkVisible: true,
     }
   },
-  computed: {
-    ...mapState('main', ['xfdStarted']),
-  },
   watch: {
     scrollY(oldValue, newValue) {
       const maxScroll = window.innerHeight * 1.36
@@ -49,10 +45,6 @@ export default {
       this.styleObj = {
         'object-position': `0% ${Math.min(percentile * 130, 100)}%`,
       }
-      this.artworkVisible = !this.xfdStarted || newValue > window.innerHeight
-    },
-    xfdStarted(newValue) {
-      this.artworkVisible = !newValue || this.scrollY > window.innerHeight
     },
   },
   mounted() {

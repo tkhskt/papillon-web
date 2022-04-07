@@ -1,32 +1,21 @@
 <template>
   <div class="top-header-container">
     <transition name="header">
-      <h1 v-if="!xfdStarted" class="title">Papillon</h1>
+      <h1 class="title">Papillon</h1>
     </transition>
     <transition name="header">
       <div
-        v-if="!xfdStarted"
         class="outer-links"
         @mouseover="$store.dispatch('main/onChangeHoverTopLink', true)"
         @mouseleave="$store.dispatch('main/onChangeHoverTopLink', false)"
       >
-        <!-- <a
-        class="link"
-        :class="{
-          'hover-blue': hoverSpotify && xfdStarted,
-          'hover-black': hoverSpotify && !xfdStarted,
-        }"
-        @mouseover="hoverSpotify = true"
-        @mouseleave="hoverSpotify = false"
-        >Spotify</a
-      > -->
         <a
           class="link"
           href="https://zohryu.bandcamp.com/album/papillon"
           target="_blank"
           :class="{
-            'hover-blue': hoverBandcamp && xfdStarted,
-            'hover-black': hoverBandcamp && !xfdStarted,
+            'hover-blue': hoverBandcamp,
+            'hover-black': hoverBandcamp,
           }"
           @mouseover="hoverBandcamp = true"
           @mouseleave="hoverBandcamp = false"
@@ -37,8 +26,8 @@
           href="https://www.youtube.com/watch?v=p2kL5TD8rY4"
           target="_blank"
           :class="{
-            'hover-blue': hoverYouTube && xfdStarted,
-            'hover-black': hoverYouTube && !xfdStarted,
+            'hover-blue': hoverYouTube,
+            'hover-black': hoverYouTube,
           }"
           @mouseover="hoverYouTube = true"
           @mouseleave="hoverYouTube = false"
@@ -60,7 +49,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('main', ['hoverTopLink', 'xfdStarted']),
+    ...mapState('main', ['hoverTopLink']),
   },
   methods: {
     onHoverContent() {
@@ -71,10 +60,6 @@ export default {
       this.hoverContent = false
 
       this.$store.dispatch('main/onChangeHoverTop', false)
-    },
-    onClickContainer() {
-      if (this.hoverArtwork || this.hoverTopLink) return
-      this.$store.dispatch('main/onChangeXfdStarted', !this.xfdStarted)
     },
   },
 }

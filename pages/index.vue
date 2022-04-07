@@ -9,27 +9,12 @@
           :color="currentSection"
         />
       </transition>
-      <transition name="modal">
-        <modal v-if="modalOpened" class="modal" />
-      </transition>
-      <mobile-menu
-        v-if="isMobile"
-        class="mobile-menu"
-        :current-section="currentSection"
-      />
       <div
         id="main-content"
         ref="mainContent"
         class="main-content"
         :class="currentSection"
       >
-        <crossfade
-          v-if="!isMobile"
-          class="crossfade"
-          :cursor-x="cursor.x"
-          :cursor-y="cursor.y"
-          :scroll-y="scrollY"
-        />
         <top
           class="top"
           :scroll-y="scrollY"
@@ -50,14 +35,6 @@
         <gradient-circle class="circle" />
       </div>
       <div ref="cursor" class="cursor" :class="{ bandcamp: hoverTrack }">
-        <span
-          ref="xfd"
-          class="xfd-guide"
-          :class="{
-            invisible: !hoverTop || hoverArtwork || hoverTopLink,
-          }"
-          >{{ xfdGuideText }}</span
-        >
         <img
           ref="bandcamp"
           class="bandcamp"
@@ -78,10 +55,8 @@
 <script>
 import { mapState } from 'vuex'
 import { TweenLite } from 'gsap/dist/gsap'
-import Crossfade from '~/components/atoms/Crossfade.vue'
 
 export default {
-  components: { Crossfade },
   data() {
     return {
       scrollY: 0,
@@ -90,7 +65,6 @@ export default {
         x: 0,
         y: 0,
       },
-      xfdGuideText: 'Play XFD',
       cursorAnimation: null,
       showMobileLine: false,
     }
@@ -101,7 +75,6 @@ export default {
       'hoverTop',
       'hoverTopLink',
       'hoverTrack',
-      'xfdStarted',
       'hoverLink',
       'isMobile',
       'modalOpened',
@@ -119,13 +92,6 @@ export default {
     },
     hoverTrack() {
       this.handleCursor()
-    },
-    xfdStarted(newValue) {
-      if (newValue) {
-        this.xfdGuideText = 'Pause'
-      } else {
-        this.xfdGuideText = 'Play XFD'
-      }
     },
     hoverLink() {
       this.handleCursor()
@@ -243,7 +209,6 @@ export default {
     },
     handleCursor() {
       const cursor = this.$refs.cursor
-      const xfd = this.$refs.xfd
       const bandcamp = this.$refs.bandcamp
       cursor.style.border = 'none'
 
@@ -297,9 +262,6 @@ export default {
             width: '200px',
             height: '200px',
           },
-          onStart() {
-            xfd.style.display = 'none'
-          },
         })
       } else if (this.hoverTop && !this.hoverArtwork) {
         this.cursorAnimation = TweenLite.to(cursor, 0.5, {
@@ -307,9 +269,6 @@ export default {
             background: 'transparent',
             width: '200px',
             height: '200px',
-          },
-          onStart() {
-            xfd.style.display = 'inline'
           },
         })
       } else if (!this.hoverTop && this.hoverArtwork) {
@@ -319,9 +278,6 @@ export default {
             width: '200px',
             height: '200px',
           },
-          onStart() {
-            xfd.style.display = 'none'
-          },
         })
       } else {
         this.cursorAnimation = TweenLite.to(cursor, 0.5, {
@@ -329,9 +285,6 @@ export default {
             background: '#ffffff',
             width: '10px',
             height: '10px',
-          },
-          onStart() {
-            xfd.style.display = 'none'
           },
         })
       }
@@ -372,8 +325,8 @@ export default {
   align-items: center;
   left: 50%;
   top: 50%;
-  width: 0px;
-  height: 0px;
+  width: 10px;
+  height: 10px;
   transform: translate3d(-50%, -50%, 0);
   color: $color-white;
   background: $color-white;
@@ -388,17 +341,6 @@ export default {
   }
   &.bandcamp {
     mix-blend-mode: normal;
-  }
-  .xfd-guide {
-    transition: opacity 0.2s ease;
-    opacity: 1;
-    white-space: nowrap;
-    letter-spacing: 0.05em;
-    display: none;
-    &.invisible {
-      transition: opacity 0.2s ease;
-      opacity: 0;
-    }
   }
   .bandcamp {
     transition: all 0.5s;

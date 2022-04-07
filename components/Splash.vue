@@ -18,12 +18,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('main', [
-      'fontLoaded',
-      'videoLoaded',
-      'artworkLoaded',
-      'isMobile',
-    ]),
+    ...mapState('main', ['fontLoaded', 'artworkLoaded', 'isMobile']),
   },
   watch: {
     fontLoaded(loaded) {
@@ -31,17 +26,14 @@ export default {
         this.loadCompleted = loaded && this.artworkLoaded
         return
       }
-      this.loadCompleted = loaded && this.videoLoaded && this.artworkLoaded
-    },
-    videoLoaded(loaded) {
-      this.loadCompleted = loaded && this.fontLoaded && this.artworkLoaded
+      this.loadCompleted = loaded && this.artworkLoaded
     },
     artworkLoaded(loaded) {
       if (this.isMobile) {
         this.loadCompleted = loaded && this.fontLoaded
         return
       }
-      this.loadCompleted = loaded && this.fontLoaded && this.videoLoaded
+      this.loadCompleted = loaded && this.fontLoaded
     },
     loadCompleted() {
       const container = this.$refs.container
