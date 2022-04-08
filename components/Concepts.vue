@@ -51,7 +51,9 @@
               <p>Store</p>
             </td>
             <td class="item-description">
-              <p>diverse.direct</p>
+              <a class="link" target="_blank" href="https://diverse.direct/"
+                >DIVERSE DIRECT</a
+              >
             </td>
           </tr>
           <tr class="list-item">
@@ -152,6 +154,32 @@ export default {
     }
     .item-description {
       padding-left: 10px;
+    }
+  }
+}
+.link {
+  position: relative;
+  cursor: pointer;
+  color: $color-white;
+  text-decoration: none;
+  &:after {
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    content: '';
+    background: $color-white;
+    @include mq() {
+      bottom: -1px;
+    }
+  }
+  &:hover {
+    transition: color 0.2s ease;
+    color: $color-blue;
+
+    @include mq() {
+      color: $color-white;
     }
   }
 }

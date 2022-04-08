@@ -42,7 +42,10 @@
                     <p>Price</p>
                   </td>
                   <td class="item-description">
-                    <p>1500¥ (event) - 1800¥ (storefront)</p>
+                    <p>
+                      1500¥ <span class="note">(event)</span> - 1800¥
+                      <span class="note">(storefront)</span>
+                    </p>
                   </td>
                 </tr>
                 <tr class="list-item">
@@ -66,7 +69,18 @@
                     <p>Store</p>
                   </td>
                   <td class="item-description">
-                    <p>diverse.direct</p>
+                    <a
+                      class="link"
+                      target="_blank"
+                      href="https://diverse.direct/"
+                      @mouseover="
+                        $store.dispatch('main/onChangeHoverLink', true)
+                      "
+                      @mouseleave="
+                        $store.dispatch('main/onChangeHoverLink', false)
+                      "
+                      >DIVERSE DIRECT</a
+                    >
                   </td>
                 </tr>
                 <tr class="list-item">
@@ -74,7 +88,12 @@
                     <p>Circle</p>
                   </td>
                   <td class="item-description">
-                    <p>zohryu (with the assistance of Four Corners)</p>
+                    <p>
+                      zohryu
+                      <span class="note"
+                        >(with the assistance of Four Corners)</span
+                      >
+                    </p>
                   </td>
                 </tr>
               </tbody>
@@ -167,6 +186,9 @@ export default {
     margin-left: 16.66vmin;
     letter-spacing: 0.05em;
     line-height: 2em;
+    .note {
+      font-size: 0.7em;
+    }
     .item-title {
       @include font-acumin-bold();
     }
@@ -174,6 +196,26 @@ export default {
       @include font-acumin();
       padding-left: 1.5em;
     }
+  }
+}
+
+.link {
+  position: relative;
+  cursor: pointer;
+  color: $color-white;
+  text-decoration: none;
+  &:after {
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    content: '';
+    background: $color-white;
+  }
+  &:hover {
+    transition: color 0.2s ease;
+    color: $color-blue;
   }
 }
 </style>

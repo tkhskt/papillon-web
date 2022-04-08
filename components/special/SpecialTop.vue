@@ -92,7 +92,7 @@ export default {
     justify-content: center;
     &__text {
       @include font-acumin();
-      font-size: 0.93vw;
+      font-size: max(14px, 0.93vw);
       color: $color-white;
     }
     &__arrow {
