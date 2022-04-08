@@ -23,9 +23,15 @@
         />
         <div class="sections">
           <span v-if="!isMobile" class="vertical-line"></span>
-          <tracks ref="tracks" class="tracks" />
-          <concepts ref="concepts" class="concepts" />
-          <credits ref="credits" class="credits" />
+          <div ref="tracks">
+            <tracks class="tracks" />
+          </div>
+          <div ref="concepts">
+            <concepts ref="concepts" class="concepts" />
+          </div>
+          <div ref="credits">
+            <credits ref="credits" class="credits" />
+          </div>
         </div>
         <span
           v-if="isMobile"
@@ -150,9 +156,6 @@ export default {
     handleScroll() {
       const imageOffset = window.innerHeight * 0
       const minHeight = 700
-      // const tracksHeight = this.$refs.tracks.clientHeight
-      // const conceptsHeight = this.$refs.concepts.clientHeight
-      // const creditsHeight = this.$refs.credits.clientHeight
       if (
         this.scrollY >
         window.innerHeight +
@@ -175,16 +178,21 @@ export default {
     },
     handleMobileScroll() {
       const minHeight = 700
+      const tracksHeight = this.$refs.tracks.clientHeight * 0.9
+      const conceptsHeight = this.$refs.concepts.clientHeight * 0.9
+      // const creditsHeight = this.$refs.credits.clientHeight
+
+      console.log(tracksHeight)
       if (
         this.scrollY >
-        Math.max(window.innerHeight, minHeight) * 2 +
+        tracksHeight +
+          conceptsHeight +
           Math.max(window.innerHeight, minHeight) * 0.5
       ) {
         this.currentSection = 'credits'
       } else if (
         this.scrollY >
-        Math.max(window.innerHeight, minHeight) +
-          Math.max(window.innerHeight, minHeight) * 0.5
+        tracksHeight + Math.max(window.innerHeight, minHeight) * 0.5
       ) {
         this.currentSection = 'concepts'
       } else if (this.scrollY > window.innerHeight * 0.5) {
