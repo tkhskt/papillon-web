@@ -150,6 +150,9 @@ export default {
     handleScroll() {
       const imageOffset = window.innerHeight * 0
       const minHeight = 700
+      // const tracksHeight = this.$refs.tracks.clientHeight
+      // const conceptsHeight = this.$refs.concepts.clientHeight
+      // const creditsHeight = this.$refs.credits.clientHeight
       if (
         this.scrollY >
         window.innerHeight +

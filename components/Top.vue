@@ -3,7 +3,6 @@
     class="top-container"
     @mouseover="onHoverContent"
     @mouseleave="onLeaveContent"
-    @click="onClickContainer"
   >
     <div class="content">
       <top-header class="top-header" />
@@ -12,7 +11,6 @@
       <img
         v-if="!isMobile"
         class="stroke--top"
-        :class="{ invisible: xfdStarted }"
         src="~assets/img/stroke_top.svg"
       />
       <img
@@ -23,7 +21,6 @@
       <img
         v-if="!isMobile"
         class="stroke--bottom"
-        :class="{ invisible: xfdStarted }"
         src="~assets/img/stroke_bottom.svg"
       />
       <img
@@ -31,9 +28,7 @@
         class="stroke--bottom"
         src="~assets/img/stroke_bottom_mobile.svg"
       />
-      <p class="scroll-nav" :class="{ invisible: xfdStarted }">
-        scroll to navigate
-      </p>
+      <p class="scroll-nav">scroll to navigate</p>
     </div>
     <artwork class="artwork" :scroll-y="scrollY" />
   </div>
@@ -49,12 +44,7 @@ export default {
     },
   },
   computed: {
-    ...mapState('main', [
-      'hoverArtwork',
-      'hoverTopLink',
-      'xfdStarted',
-      'isMobile',
-    ]),
+    ...mapState('main', ['hoverArtwork', 'hoverTopLink', 'isMobile']),
   },
   methods: {
     onHoverContent() {
@@ -65,10 +55,6 @@ export default {
       this.hoverContent = false
 
       this.$store.dispatch('main/onChangeHoverTop', false)
-    },
-    onClickContainer() {
-      if (this.hoverArtwork || this.hoverTopLink) return
-      this.$store.dispatch('main/onChangeXfdStarted', !this.xfdStarted)
     },
   },
 }

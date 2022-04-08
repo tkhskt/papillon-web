@@ -67,6 +67,15 @@ export default {
         },
         {
           artist: {
+            name: 'Frums',
+            url: 'https://twitter.com/frumsdotxyz',
+          },
+          artist2: null,
+          title: 'variadicgleam',
+          url: '',
+        },
+        {
+          artist: {
             name: 'Hiroto Kudo',
             url: 'https://twitter.com/qudo_',
           },
@@ -88,11 +97,11 @@ export default {
         },
         {
           artist: {
-            name: 'BUNGALANGIT',
-            url: null,
+            name: 'LASTorder',
+            url: 'https://twitter.com/LASTorder_kt',
           },
           artist2: null,
-          title: '神様が見てる (2021 remaster)',
+          title: 'Missing Person (行方不明の人)',
           url: '',
         },
         {
@@ -106,6 +115,15 @@ export default {
         },
         {
           artist: {
+            name: 'Phasma',
+            url: 'https://twitter.com/Phasma',
+          },
+          artist2: null,
+          title: 'Gray Storm',
+          url: '',
+        },
+        {
+          artist: {
             name: 'zohryu',
             url: 'https://twitter.com/zohryu',
           },
@@ -115,7 +133,25 @@ export default {
         },
         {
           artist: {
-            name: '9788n',
+            name: 'cokiyu',
+            url: 'https://twitter.com/c0kiyu',
+          },
+          artist2: null,
+          title: 'Stay There As You Are',
+          url: '',
+        },
+        {
+          artist: {
+            name: 'charlot',
+            url: 'https://twitter.com/charlot_bn',
+          },
+          artist2: null,
+          title: 'leaving home',
+          url: '',
+        },
+        {
+          artist: {
+            name: '9887n',
             url: null,
           },
           artist2: null,
@@ -132,6 +168,24 @@ export default {
             url: 'https://twitter.com/zohryu',
           },
           title: 'state of mind',
+          url: '',
+        },
+        {
+          artist: {
+            name: '黒皇帝',
+            url: 'https://twitter.com/dialgadu77',
+          },
+          artist2: null,
+          title: 'world connection',
+          url: '',
+        },
+        {
+          artist: {
+            name: 'ginrei',
+            url: 'https://twitter.com/ginrei',
+          },
+          artist2: null,
+          title: 'terra nostra',
           url: '',
         },
         {
@@ -172,9 +226,10 @@ export default {
 <style scoped lang="scss">
 .tracks-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  min-height: $min-height-section;
+  // min-height: $min-height-section;
+  padding: 10vw 0;
   @include mq() {
     flex-direction: column;
     justify-content: center;

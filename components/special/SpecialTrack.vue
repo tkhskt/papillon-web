@@ -17,7 +17,7 @@
                 <span class="index">{{ ('00' + (index + 1)).slice(-2) }}.</span>
                 <p class="track">{{ track.title }}</p>
                 <template v-if="track.artist2 != null">
-                  <span class="feat"> feat. </span>
+                  <span class="feat">&nbsp;feat.&nbsp;</span>
                   <a
                     :href="track.artist2.url"
                     target="_blank"

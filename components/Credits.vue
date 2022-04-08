@@ -23,16 +23,6 @@
           >)
         </li>
         <li class="credit">
-          XFD video - MikaIsFake (<a
-            class="link"
-            href="https://twitter.com/fake_mika"
-            target="_blank"
-            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
-            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
-            >@fake_mika</a
-          >)
-        </li>
-        <li class="credit">
           Web creation - thorn (<a
             class="link"
             href="https://twitter.com/gericass"
