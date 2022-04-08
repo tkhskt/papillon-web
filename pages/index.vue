@@ -154,35 +154,34 @@ export default {
       return typeof Touch !== 'undefined'
     },
     handleScroll() {
-      const imageOffset = window.innerHeight * 0
+      // const imageOffset = window.innerHeight * 0
       const minHeight = 700
+      const tracksHeight = this.$refs.tracks.clientHeight * 0.9
+      const conceptsHeight = this.$refs.concepts.clientHeight * 0.9
       if (
         this.scrollY >
-        window.innerHeight +
-          Math.max(window.innerHeight, minHeight) * 2 +
-          imageOffset
+        tracksHeight +
+          conceptsHeight +
+          Math.max(window.innerHeight, minHeight) * 0.5
       ) {
         this.currentSection = 'credits'
       } else if (
         this.scrollY >
-        window.innerHeight +
-          Math.max(window.innerHeight, minHeight) +
-          imageOffset
+        tracksHeight + Math.max(window.innerHeight, minHeight) * 0.5
       ) {
         this.currentSection = 'concepts'
-      } else if (this.scrollY > window.innerHeight * 0.8) {
+      } else if (this.scrollY > window.innerHeight * 0.5) {
         this.currentSection = 'tracks'
+        this.showMobileLine = true
       } else {
         this.currentSection = 'top'
+        this.showMobileLine = false
       }
     },
     handleMobileScroll() {
       const minHeight = 700
       const tracksHeight = this.$refs.tracks.clientHeight * 0.9
       const conceptsHeight = this.$refs.concepts.clientHeight * 0.9
-      // const creditsHeight = this.$refs.credits.clientHeight
-
-      console.log(tracksHeight)
       if (
         this.scrollY >
         tracksHeight +
