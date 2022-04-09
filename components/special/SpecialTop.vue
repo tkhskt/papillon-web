@@ -27,8 +27,24 @@ export default {
       default: 0,
     },
   },
+  mounted() {
+    if (this.supportWebP()) {
+      this.$store.dispatch('main/onLoadArtworkCompleted', true)
+    }
+  },
+  methods: {
+    supportWebP() {
+      const elem = document.createElement('canvas')
 
-  methods: {},
+      if (elem.getContext && elem.getContext('2d')) {
+        // was able or not to get WebP representation
+        return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0
+      } else {
+        // very old browser like IE 8, canvas not supported
+        return false
+      }
+    },
+  },
 }
 </script>
 

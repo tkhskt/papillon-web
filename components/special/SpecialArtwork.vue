@@ -6,7 +6,11 @@
         class="artwork-img"
         srcset="~assets/img/papillon.webp"
       />
-      <img class="artwork-img" src="~assets/img/papillon.jpg" />
+      <img
+        class="artwork-img"
+        src="~assets/img/papillon.jpg"
+        @load="$store.dispatch('main/onLoadArtworkCompleted', true)"
+      />
     </picture>
   </div>
 </template>

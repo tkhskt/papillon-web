@@ -31,7 +31,7 @@ export default {
       this.width = newValue
     },
     translateX(newValue) {
-      this.sidebarVisible = window.innerWidth * 0.3 < newValue
+      this.sidebarVisible = window.outerWidth * 0.3 < newValue
     },
   },
   mounted() {
@@ -39,27 +39,17 @@ export default {
     window.addEventListener('resize', this.resize)
     // Firefox
     if (content.addEventListener) {
-      content.addEventListener(
-        'DOMMouseScroll',
-        function (e) {
-          content.scrollBy(-e.wheelDelta, 0)
-          this.$store.dispatch('main/onHorizontalScroll', content.scrollLeft)
-        },
-        false
-      )
+      content.addEventListener('DOMMouseScroll', this.scroll, false)
     }
-    // IE
-    if (content.attachEvent) {
-      content.attachEvent('onmousewheel', function (e) {
-        content.scrollBy(-e.wheelDelta, 0)
-        this.$store.dispatch('main/onHorizontalScroll', content.scrollLeft)
-      })
-    }
+
     // Chrome
-    content.onmousewheel = (e) => {
-      content.scrollBy(-e.wheelDelta, 0)
-      this.$store.dispatch('main/onHorizontalScroll', content.scrollLeft)
-    }
+    content.onmousewheel = this.scroll
+  },
+  beforeDestroy() {
+    const content = this.$refs.rootWrapper
+    window.removeEventListener('resize', this.resize)
+    content.removeEventListener('DOMMouseScroll', this.scroll)
+    content.onmousewheel = null
   },
   methods: {
     resize() {
@@ -67,6 +57,11 @@ export default {
         'main/onHorizontalScroll',
         this.$refs.rootWrapper.scrollLeft
       )
+    },
+    scroll(e) {
+      const content = this.$refs.rootWrapper
+      content.scrollBy(-e.wheelDelta, 0)
+      this.$store.dispatch('main/onHorizontalScroll', content.scrollLeft)
     },
   },
 }

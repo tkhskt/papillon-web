@@ -35,10 +35,14 @@ export default {
     this.dy = this.sy
   },
   mounted() {
-    window.requestAnimationFrame(this.render)
+    this.frame = window.requestAnimationFrame(this.render)
     window.addEventListener('resize', this.resize)
     const width = this.$refs.container.scrollWidth
     this.$store.dispatch('main/onResizeContainer', width)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resize)
+    window.cancelAnimationFrame(this.frame)
   },
   methods: {
     resize() {
@@ -54,9 +58,11 @@ export default {
       this.dy = this.li(this.dy, this.sy, 0.05)
       this.dx = Math.floor(this.dx * 100) / 100
       this.dy = Math.floor(this.dy * 100) / 100
-      this.$refs.container.style.transform = `translate3d(-${this.dx}px, -${this.dy}px, 0px)`
+      this.$refs.container.style.transform = `translate3d(-${
+        Math.floor(this.dx * 10) / 10
+      }px, -${this.dy}px, 0px)`
       this.$store.dispatch('main/onTranslate', this.dx)
-      window.requestAnimationFrame(this.render)
+      this.frame = window.requestAnimationFrame(this.render)
     },
     li(a, b, n) {
       return (1 - n) * a + n * b
