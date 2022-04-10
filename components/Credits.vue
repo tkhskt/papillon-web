@@ -23,6 +23,16 @@
           >)
         </li>
         <li class="credit">
+          Interior art - chiffon (<a
+            class="link"
+            href="https://twitter.com/chantillycreamy"
+            target="_blank"
+            @mouseover="$store.dispatch('main/onChangeHoverLink', true)"
+            @mouseleave="$store.dispatch('main/onChangeHoverLink', false)"
+            >@chantillycreamy</a
+          >)
+        </li>
+        <li class="credit">
           Web creation - thorn (<a
             class="link"
             href="https://twitter.com/gericass"

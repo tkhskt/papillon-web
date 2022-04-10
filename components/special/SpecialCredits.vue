@@ -55,6 +55,27 @@
                 </tr>
                 <tr class="list-item">
                   <td class="item-title">
+                    <p>Interior art</p>
+                  </td>
+                  <td class="item-description">
+                    <p>
+                      chiffon (<a
+                        class="link"
+                        href="https://twitter.com/chantillycreamy"
+                        target="_blank"
+                        @mouseover="
+                          $store.dispatch('main/onChangeHoverLink', true)
+                        "
+                        @mouseleave="
+                          $store.dispatch('main/onChangeHoverLink', false)
+                        "
+                        >@chantillycreamy</a
+                      >)
+                    </p>
+                  </td>
+                </tr>
+                <tr class="list-item">
+                  <td class="item-title">
                     <p>Web creation</p>
                   </td>
                   <td class="item-description">
