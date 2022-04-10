@@ -53,7 +53,7 @@
                     <p>Release</p>
                   </td>
                   <td class="item-description">
-                    <p>2022.04.25</p>
+                    <p>2022.04.24</p>
                   </td>
                 </tr>
                 <tr class="list-item">
