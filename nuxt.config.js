@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Papillon - Special Edition',
+    title: 'Papillon - Limited Edition',
     htmlAttrs: {
       lang: 'en',
     },
@@ -24,7 +24,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'Papillon - Special Edition',
+        content: 'Papillon - Limited Edition',
       },
       {
         hid: 'og:description',
